@@ -722,6 +722,42 @@ template {
   min-height: 100%;
 }
 
+.proud {
+  position: relative;
+  height: 100%;
+  height: 49.125rem;
+  background: linear-gradient(344.67deg, #EBDCD4 8.31%, rgba(235, 221, 213, 0) 84.2%), url(../img/proud-bg-desktop@1x.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.proud::before,
+.proud::after {
+  position: absolute;
+  content: "";
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0.125rem;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.proud::before {
+  top: 0;
+  height: 19rem;
+}
+
+.proud::after {
+  bottom: 0;
+  height: 14.5625rem;
+}
+
+.section__title--proud {
+  text-align: center;
+  padding-top: 7.625rem;
+  margin-bottom: 5.4375rem;
+}
+
 /* BLOCKS */
 
 .header-top {
@@ -1186,14 +1222,8 @@ template {
   padding-right: 15px;
 }
 
-.section__title {
+.section__title--lawyer {
   margin: 6.25rem 0 4rem 0;
-  font-family: 'Playfair Display';
-  font-style: normal;
-  font-weight: normal;
-  font-size: 4.5rem;
-  line-height: 6rem;
-  color: #ffffff;
 }
 
 .lawyer-leftcol-block {
@@ -1360,6 +1390,135 @@ template {
   background-position: center;
 }
 
+.section__title {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 4.5rem;
+  line-height: 6rem;
+}
+
+.section__title--white {
+  color: #ffffff;
+}
+
+.section__title--black {
+  color: #000000;
+}
+
+.cards {
+  max-width: 100%;
+}
+
+.cards-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+  justify-content: space-between;
+}
+
+.cards__item {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  margin-left: 15px;
+  margin-right: 15px;
+  word-wrap: break-word;
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 30rem;
+  min-height: 24.375rem;
+}
+
+.card__img {
+  width: 15.3125rem;
+  height: 15.3125rem;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2.4375rem;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 1.25rem rgba(133, 107, 67, 0.1);
+}
+
+.card__img-wrap {
+  width: 13.6875rem;
+  height: 13.6875rem;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 1.25rem rgba(133, 107, 67, 0.1);
+}
+
+.no-webp .hands {
+  background-image: url(../img/hands@1x.png);
+  background-repeat: no-repeat;
+  background-size: 219px 108px;
+  background-position: center;
+}
+
+.webp .hands {
+  background-image: url(../img/hands@1x.webp);
+  background-repeat: no-repeat;
+  background-size: 219px 108px;
+  background-position: center;
+}
+
+.no-webp .family {
+  background-image: url(../img/family@1x.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.webp .family {
+  background-image: url(../img/family@1x.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.no-webp .house {
+  background-image: url(../img/house@1x.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.webp .house {
+  background-image: url(../img/house@1x.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.card__text {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.5rem;
+  line-height: 2.125rem;
+  text-align: center;
+  color: #000000;
+}
+
+.cards__item:nth-child(2) .card__text {
+  max-width: 27.8125rem;
+}
+
+.cards__item:nth-child(3) .card__text {
+  max-width: 22.25rem;
+}
+
 @media (min-width: 120rem) {
   .no-webp .header {
     background-image: url(../img/header-bg-desktop@1x.jpg);
@@ -1506,6 +1665,31 @@ template {
     padding-left: 1.5px;
     padding-right: 1.5px;
   }
+
+  .cards-list {
+    margin-left: -1.5px;
+    margin-right: -1.5px;
+  }
+
+  .cards__item {
+    margin-left: -1.5px;
+    margin-right: -1.5px;
+  }
+
+  .cards__item {
+    margin-left: 1.5px;
+    margin-right: 1.5px;
+  }
+
+  .cards__item {
+    padding-left: 1.5px;
+    padding-right: 1.5px;
+  }
+
+  .card__img {
+    margin-left: -1.5px;
+    margin-right: -1.5px;
+  }
 }
 
 @media screen and (min-width: 480px) {
@@ -1627,6 +1811,31 @@ template {
   .lawyer-rightcol {
     padding-left: 1.5px;
     padding-right: 1.5px;
+  }
+
+  .cards-list {
+    margin-left: -1.5px;
+    margin-right: -1.5px;
+  }
+
+  .cards__item {
+    margin-left: -1.5px;
+    margin-right: -1.5px;
+  }
+
+  .cards__item {
+    margin-left: 1.5px;
+    margin-right: 1.5px;
+  }
+
+  .cards__item {
+    padding-left: 1.5px;
+    padding-right: 1.5px;
+  }
+
+  .card__img {
+    margin-left: -1.5px;
+    margin-right: -1.5px;
   }
 }
 
@@ -1750,6 +1959,31 @@ template {
     padding-left: 2.5px;
     padding-right: 2.5px;
   }
+
+  .cards-list {
+    margin-left: -2.5px;
+    margin-right: -2.5px;
+  }
+
+  .cards__item {
+    margin-left: -2.5px;
+    margin-right: -2.5px;
+  }
+
+  .cards__item {
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+  }
+
+  .cards__item {
+    padding-left: 2.5px;
+    padding-right: 2.5px;
+  }
+
+  .card__img {
+    margin-left: -2.5px;
+    margin-right: -2.5px;
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -1871,6 +2105,31 @@ template {
   .lawyer-rightcol {
     padding-left: 2.5px;
     padding-right: 2.5px;
+  }
+
+  .cards-list {
+    margin-left: -2.5px;
+    margin-right: -2.5px;
+  }
+
+  .cards__item {
+    margin-left: -2.5px;
+    margin-right: -2.5px;
+  }
+
+  .cards__item {
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+  }
+
+  .cards__item {
+    padding-left: 2.5px;
+    padding-right: 2.5px;
+  }
+
+  .card__img {
+    margin-left: -2.5px;
+    margin-right: -2.5px;
   }
 }
 
@@ -1994,6 +2253,31 @@ template {
     padding-left: 2.5px;
     padding-right: 2.5px;
   }
+
+  .cards-list {
+    margin-left: -2.5px;
+    margin-right: -2.5px;
+  }
+
+  .cards__item {
+    margin-left: -2.5px;
+    margin-right: -2.5px;
+  }
+
+  .cards__item {
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+  }
+
+  .cards__item {
+    padding-left: 2.5px;
+    padding-right: 2.5px;
+  }
+
+  .card__img {
+    margin-left: -2.5px;
+    margin-right: -2.5px;
+  }
 }
 
 @media screen and (min-width: 1510px) {
@@ -2027,5 +2311,9 @@ template {
 
   .lawyer-rightcol {
     width: calc(41.66667% - 5px);
+  }
+
+  .cards__item {
+    width: calc(33.33333% - 5px);
   }
 }
