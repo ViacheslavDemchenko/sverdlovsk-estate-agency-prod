@@ -694,6 +694,26 @@ template {
   background-position: center;
 }
 
+.lawyer::before,
+.lawyer::after {
+  position: absolute;
+  content: "";
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0.125rem;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.lawyer::before {
+  top: 0;
+  height: 16.4375rem;
+}
+
+.lawyer::after {
+  bottom: 0;
+  height: 7.75rem;
+}
+
 .lawyer-cols {
   display: flex;
   flex-wrap: wrap;
@@ -1179,6 +1199,7 @@ template {
 .lawyer-leftcol-block {
   width: 53.4375rem;
   min-height: 51rem;
+  margin-left: -0.25rem;
   padding: 1.5625rem 1.75rem;
   background: linear-gradient(130.56deg, #EBDCD4 1.65%, #FFFFFF 100%);
   border-radius: 1.875rem;
@@ -1295,9 +1316,10 @@ template {
 .libra-block {
   position: absolute;
   bottom: 0;
-  width: 41.5625rem;
+  width: 38.125rem;
   min-height: 15.25rem;
-  padding: 4rem 13.125rem 4rem 4rem;
+  margin-left: 1.625rem;
+  padding: 4rem 9.625rem 4rem 4rem;
   border-radius: 50%/10%;
   background: linear-gradient(111.8deg, #ECDDD5 0%, #FFFFFF 100%);
 }
@@ -1315,8 +1337,8 @@ template {
 .no-webp .libra-block__text::after {
   position: absolute;
   content: "";
-  top: 0;
-  right: 0;
+  top: -1.25rem;
+  right: -13.375rem;
   width: 10.125rem;
   height: 12.125rem;
   background-image: url(../img/libra@1x.png);
@@ -1329,7 +1351,7 @@ template {
   position: absolute;
   content: "";
   top: -1.25rem;
-  right: -16.8125rem;
+  right: -13.375rem;
   width: 10.125rem;
   height: 12.125rem;
   background-image: url(../img/libra@1x.webp);
