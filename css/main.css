@@ -1213,6 +1213,10 @@ template {
   text-align: center;
 }
 
+.first-form legend {
+  margin: auto;
+}
+
 .form__title {
   font-family: "PlayfairDisplay-Medium";
   font-weight: 500;
@@ -2108,10 +2112,6 @@ template {
     margin: 0 auto;
   }
 
-  .first-form legend {
-    padding: 0 4.6875rem;
-  }
-
   .form__title {
     margin-bottom: 1.125rem;
     font-size: 1.6875rem;
@@ -2119,7 +2119,8 @@ template {
   }
 
   .form__subtitle {
-    margin-bottom: 2.25rem;
+    max-width: 18.8125rem;
+    margin: 0 auto 2.25rem auto;
     font-size: 0.875rem;
     line-height: 1.375rem;
   }
@@ -2155,9 +2156,9 @@ template {
   }
 
   .fingerup-block {
-    width: 40.625rem;
+    width: 34.375rem;
     min-height: 9.375rem;
-    padding: 1.875rem 11.25rem 1.875rem 3.125rem;
+    padding: 1.875rem 10.625rem 1.875rem 3.125rem;
     margin: 0 auto 4.5625rem auto;
   }
 
@@ -2257,8 +2258,10 @@ template {
     line-height: 1.75rem;
   }
 
-  .first-form legend {
-    padding: 0 5.5625rem;
+  .fingerup-block {
+    width: 37.5rem;
+    min-height: 9.375rem;
+    padding: 1.875rem 11.5625rem 1.875rem 3.125rem;
   }
 
   .content__text::before {
@@ -2375,6 +2378,11 @@ template {
   .oval-block {
     min-height: 55.5rem;
     margin: 0 auto 2.8125rem auto;
+  }
+
+  .oval-block::before {
+    top: -11rem;
+    height: 11rem;
   }
 
   .oval-block__inner {
@@ -2517,16 +2525,14 @@ template {
     width: 100%;
   }
 
-  .first-form legend {
-    padding: 0 7rem;
-  }
-
   .form__title {
     font-size: 2.25rem;
     line-height: 3rem;
   }
 
   .form__subtitle {
+    max-width: 23.4375rem;
+    margin: 0 auto 2.25rem auto;
     font-size: 1.125rem;
     line-height: 1.625rem;
   }
