@@ -16,7 +16,7 @@
 
 html,
 body {
-  font-family: "Arial", "Tahoma", sans-serif;
+  font-family: "Raleway-Regular", "PlayfairDisplay-Medium", "Arial", sans-serif;
   font-size: 16px;
   font-weight: 400;
   font-style: normal;
@@ -36,20 +36,44 @@ body {
   padding-left: 15px;
   padding-right: 15px;
   position: relative;
-  padding: 0 !important;
   min-height: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.container--lines-light {
-  border-left: 0.125rem solid rgba(255, 255, 255, 0.2);
-  border-right: 0.125rem solid rgba(255, 255, 255, 0.2);
+.container::before,
+.container::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  width: 0.125rem;
+  height: 100%;
 }
 
-.container--lines-dark {
-  border-left: 0.125rem solid rgba(0, 0, 0, 0.1);
-  border-right: 0.125rem solid rgba(0, 0, 0, 0.1);
+.container--lines-light::before,
+.container--lines-light::after {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.container--lines-light::before {
+  left: 0.9375rem;
+}
+
+.container--lines-light::after {
+  right: 0.9375rem;
+}
+
+.container--lines-dark::before,
+.container--lines-dark::after {
+  color: rgba(0, 0, 0, 0.1);
+}
+
+.container--lines-dark::before {
+  left: 0.9375rem;
+}
+
+.container--lines-dark::after {
+  right: 0.9375rem;
 }
 
 /* Box-sizing-model */
@@ -558,17 +582,45 @@ template {
 
 /* FONTS */
 
-/* @font-face {
-  font-family: 'Century Gothic';
-  src: url('../fonts/century-gothic/century-gothic.svg#CenturyGothic') format('svg'),
-       url('../fonts/century-gothic/century-gothic.ttf') format('truetype'),
-       url('../fonts/century-gothic/century-gothic.woff') format('woff'),
-       url('../fonts/century-gothic/century-gothic.eot'),
-       url('../fonts/century-gothic/century-gothic.eot?#iefix') format('embedded-opentype'),
-       url('../fonts/century-gothic/century-gothic.woff2') format('woff2');
+@font-face {
+  font-family: 'PlayfairDisplay-Medium';
+  src: url("../fonts/Playfair-display-medium/PlayfairDisplay-Medium.eot");
+  src: url("../fonts/Playfair-display-medium/PlayfairDisplay-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/Playfair-display-medium/PlayfairDisplay-Medium.svg#PlayfairDisplay-Medium") format("svg"), url("../fonts/Playfair-display-medium/PlayfairDisplay-Medium.ttf") format("truetype"), url("../fonts/Playfair-display-medium/PlayfairDisplay-Medium.woff") format("woff"), url("../fonts/Playfair-display-medium/PlayfairDisplay-Medium.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
-} */
+}
+
+@font-face {
+  font-family: 'Raleway-Bold';
+  src: url("..//fonts/raleway-bold/Raleway-Bold.eot");
+  src: url("../fonts/raleway-bold/Raleway-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/raleway-bold/Raleway-Bold.svg#Raleway-Bold") format("svg"), url("../fonts/raleway-bold/Raleway-Bold.ttf") format("truetype"), url("../fonts/raleway-bold/Raleway-Bold.woff") format("woff"), url("../fonts/raleway-bold/Raleway-Bold.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Raleway-Medium';
+  src: url("../fonts/raleway-medium/Raleway-Medium.eot");
+  src: url("../fonts/raleway-medium/Raleway-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/raleway-medium/Raleway-Medium.svg#Raleway-Medium") format("svg"), url("../fonts/raleway-medium/Raleway-Medium.ttf") format("truetype"), url("../fonts/raleway-medium/Raleway-Medium.woff") format("woff"), url("../fonts/raleway-medium/Raleway-Medium.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Raleway-Regular';
+  src: url("../fonts/raleway-regular/Raleway-Regular.eot");
+  src: url("../fonts/raleway-regular/Raleway-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/raleway-regular/Raleway-Regular.svg#Raleway-Regular") format("svg"), url("../fonts/raleway-regular/Raleway-Regular.ttf") format("truetype"), url("../fonts/raleway-regular/Raleway-Regular.woff") format("woff"), url("../fonts/raleway-regular/Raleway-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: url("../fonts/roboto-regular/Roboto-Regular.eot");
+  src: url("../fonts/roboto-regular/Roboto-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-regular/Roboto-Regular.svg#Roboto-Regular") format("svg"), url("../fonts/roboto-regular/Roboto-Regular.ttf") format("truetype"), url("../fonts/roboto-regular/Roboto-Regular.woff") format("woff"), url("../fonts/roboto-regular/Roboto-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
 
 /* MIXINS & VARIABLES */
 
@@ -590,8 +642,11 @@ template {
 
 .header {
   position: relative;
-  min-height: 64rem;
+  overflow: auto;
   height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .header::after {
@@ -620,7 +675,6 @@ template {
 
 .services {
   position: relative;
-  background: linear-gradient(334.13deg, #EBDCD4 8.31%, rgba(235, 221, 213, 0) 84.2%), url(../img/services-bg-desktop@1x.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -629,12 +683,20 @@ template {
 .services__title {
   margin: 4.8125rem 0 2.4375rem;
   text-align: center;
-  font-family: 'Playfair Display';
+  font-family: "PlayfairDisplay-Medium";
+  font-weight: 500;
   font-style: normal;
-  font-weight: normal;
   font-size: 3rem;
   line-height: 4rem;
   color: #241911;
+}
+
+.no-webp .services {
+  background: linear-gradient(334.13deg, #EBDCD4 8.31%, rgba(235, 221, 213, 0) 84.2%), url(../img/services-bg-desktop@1x.png);
+}
+
+.webp .services {
+  background: linear-gradient(334.13deg, #EBDCD4 8.31%, rgba(235, 221, 213, 0) 84.2%), url(../img/services-bg-desktop@1x.webp);
 }
 
 .oval-block {
@@ -676,8 +738,8 @@ template {
   transform: translate(-50%, -50%);
   display: flex;
   flex-wrap: wrap;
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -5px;
+  margin-right: -5px;
   padding: 5.3125rem 5rem 2.5rem 5rem;
   border-radius: 50%/10%;
   background: #ffffff;
@@ -687,8 +749,7 @@ template {
 .lawyer {
   position: relative;
   height: 100%;
-  min-height: 74.875rem;
-  background-image: url(../img/lawyer-bg-desktop@1x.jpg);
+  min-height: 62.5rem;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -717,8 +778,8 @@ template {
 .lawyer-cols {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -5px;
+  margin-right: -5px;
   min-height: 100%;
 }
 
@@ -761,8 +822,8 @@ template {
 .form-cols {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -5px;
+  margin-right: -5px;
   margin-top: 6rem;
 }
 
@@ -826,8 +887,8 @@ template {
 .form-cols {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -5px;
+  margin-right: -5px;
   margin-top: 6rem;
 }
 
@@ -865,29 +926,29 @@ template {
 .footer-cols {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -5px;
+  margin-right: -5px;
   padding: 4.5625rem 0.3125rem 3.125rem 0.3125rem;
 }
 
 .footer-leftcols {
   box-sizing: border-box;
   word-wrap: break-word;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
   word-wrap: break-word;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .footer-rightcols {
   box-sizing: border-box;
   word-wrap: break-word;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
   word-wrap: break-word;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 /* BLOCKS */
@@ -895,21 +956,21 @@ template {
 .header-top {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -5px;
+  margin-right: -5px;
   justify-content: space-between;
   align-items: center;
-  padding: 3.125rem 0 0 0;
+  padding: 2.625rem 0 0 0;
 }
 
 .logo {
   box-sizing: border-box;
   word-wrap: break-word;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
   word-wrap: break-word;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .logo__link {
@@ -920,37 +981,37 @@ template {
 .nav {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -5px;
+  margin-right: -5px;
   box-sizing: border-box;
   word-wrap: break-word;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
   word-wrap: break-word;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
   justify-content: center;
 }
 
 .nav-list {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -5px;
+  margin-right: -5px;
   box-sizing: border-box;
   word-wrap: break-word;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
   word-wrap: break-word;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
   justify-content: space-between;
 }
 
 .nav__link {
-  font-family: 'Roboto';
+  font-family: "Roboto-Regular";
+  font-weight: 400;
   font-style: normal;
-  font-weight: normal;
   font-size: 1.5rem;
   line-height: 1.75rem;
   color: #ffffff;
@@ -961,18 +1022,18 @@ template {
   flex-direction: column;
   box-sizing: border-box;
   word-wrap: break-word;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
   word-wrap: break-word;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
   text-align: right;
 }
 
 .phone-number {
-  font-family: 'Playfair Display';
+  font-family: "PlayfairDisplay-Medium";
+  font-weight: 500;
   font-style: normal;
-  font-weight: normal;
   font-size: 2.25rem;
   line-height: 3rem;
   letter-spacing: 0.02em;
@@ -980,9 +1041,9 @@ template {
 }
 
 .call-order {
-  font-family: 'Raleway';
+  font-family: "Raleway-Regular";
+  font-weight: 400;
   font-style: normal;
-  font-weight: normal;
   font-size: 1.125rem;
   line-height: 1.3125rem;
   letter-spacing: 0.02em;
@@ -992,9 +1053,10 @@ template {
 .header-center {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -5px;
+  margin-right: -5px;
   justify-content: center;
+  margin-top: 10rem;
 }
 
 .center-content {
@@ -1009,6 +1071,9 @@ template {
   transform: translateX(-50%);
   width: 8.375rem;
   height: 2.625rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .no-webp .center-content::before {
@@ -1017,7 +1082,7 @@ template {
 }
 
 .webp .center-content::before {
-  top: 7.5rem;
+  top: -0.625rem;
   background-image: url(../img/header-decor@1x.webp);
 }
 
@@ -1037,11 +1102,11 @@ template {
 
 .main-title {
   max-width: 58.25rem;
-  margin: 12.5rem 0 3.75rem 0;
+  margin-bottom: 3.75rem;
   text-align: center;
-  font-family: 'Playfair Display';
+  font-family: "PlayfairDisplay-Medium";
+  font-weight: 500;
   font-style: normal;
-  font-weight: normal;
   font-size: 6rem;
   line-height: 6.625rem;
   color: #ffffff;
@@ -1050,9 +1115,9 @@ template {
 .main-subtitle {
   max-width: 28.125rem;
   margin: 0 auto;
-  font-family: 'Raleway';
+  font-family: "Raleway-Regular";
+  font-weight: 400;
   font-style: normal;
-  font-weight: normal;
   font-size: 1.5rem;
   line-height: 2.125rem;
   text-align: center;
@@ -1061,7 +1126,7 @@ template {
 
 .pagination-list {
   position: absolute;
-  left: -0.4375rem;
+  left: 0.625rem;
   bottom: 5.625rem;
   height: 9.8125rem;
   width: 1.0625rem;
@@ -1084,11 +1149,11 @@ template {
 .services-leftcol {
   box-sizing: border-box;
   word-wrap: break-word;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
   word-wrap: break-word;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .services__item {
@@ -1096,9 +1161,9 @@ template {
   min-height: 4rem;
   padding: 2.0625rem 0;
   border-bottom: 0.0625rem solid rgba(78, 54, 41, 0.1);
-  font-family: 'Raleway';
-  font-style: normal;
+  font-family: "Raleway-Medium";
   font-weight: 500;
+  font-style: normal;
   font-size: 1.125rem;
   line-height: 1.3125rem;
   color: #241911;
@@ -1109,9 +1174,9 @@ template {
   top: 50%;
   left: -2.8125rem;
   transform: translateY(-50%);
-  font-family: 'Playfair Display';
+  font-family: "PlayfairDisplay-Medium";
+  font-weight: 500;
   font-style: normal;
-  font-weight: normal;
   font-size: 3rem;
   line-height: 4rem;
   color: #F4BA47;
@@ -1180,11 +1245,11 @@ template {
 .services-rightcol {
   box-sizing: border-box;
   word-wrap: break-word;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
   word-wrap: break-word;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .first-form-wrap {
@@ -1197,9 +1262,9 @@ template {
 
 .form__title {
   margin-bottom: 1.125rem;
-  font-family: 'Playfair Display';
+  font-family: "PlayfairDisplay-Medium";
+  font-weight: 500;
   font-style: normal;
-  font-weight: normal;
   font-size: 2.25rem;
   line-height: 3rem;
   color: #241911;
@@ -1207,9 +1272,9 @@ template {
 
 .form__subtitle {
   margin-bottom: 2.25rem;
-  font-family: 'Raleway';
+  font-family: "Raleway-Regular";
+  font-weight: 400;
   font-style: normal;
-  font-weight: normal;
   font-size: 1.125rem;
   line-height: 1.625rem;
   text-align: center;
@@ -1241,9 +1306,9 @@ template {
 .input-block input::-moz-placeholder,
 .input-block input::-moz-placeholder,
 .input-block input::-ms-input-placeholder {
-  font-family: 'Raleway';
+  font-family: "Raleway-Regular";
+  font-weight: 400;
   font-style: normal;
-  font-weight: normal;
   font-size: 1.125rem;
   line-height: 1.3125rem;
   display: flex;
@@ -1261,9 +1326,9 @@ template {
   border-radius: 5rem;
   border: none;
   outline: none;
-  font-family: 'Raleway';
+  font-family: "Raleway-Bold";
+  font-weight: 700;
   font-style: normal;
-  font-weight: bold;
   font-size: 1.5rem;
   line-height: 1.75rem;
   color: #241911;
@@ -1276,8 +1341,9 @@ template {
   left: calc(50% - 42px);
   bottom: -5rem;
   transform: rotate(180deg) translateX(calc(50% - 42px));
-  width: 8.375rem;
-  height: 2.625rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .no-webp .form__submit::after {
@@ -1293,7 +1359,6 @@ template {
   width: 46rem;
   min-height: 12.875rem;
   margin: 0 auto 4.5625rem auto;
-  padding: 3.4375rem 15rem 3.4375rem 3.4375rem;
   background: #ffffff;
   box-shadow: 0 0 2.5rem rgba(216, 216, 216, 0.7);
   border-radius: 2.5rem;
@@ -1320,9 +1385,9 @@ template {
 }
 
 .fingerup-block__text {
-  font-family: 'Raleway';
-  font-style: normal;
+  font-family: "Raleway-Medium";
   font-weight: 500;
+  font-style: normal;
   font-size: 2.25rem;
   line-height: 3rem;
   color: #241911;
@@ -1331,9 +1396,9 @@ template {
 .fingerup {
   position: absolute;
   right: 0;
-  bottom: 1.875rem;
-  width: 8.375rem;
-  height: 12.375rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .no-webp .fingerup {
@@ -1347,15 +1412,15 @@ template {
 .lawyer-leftcol {
   box-sizing: border-box;
   word-wrap: break-word;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
   word-wrap: break-word;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .lawyer-leftcol-block {
-  width: 53.4375rem;
+  max-width: 53.4375rem;
   min-height: 51rem;
   margin-left: -0.25rem;
   padding: 1.5625rem 1.75rem;
@@ -1379,40 +1444,36 @@ template {
   position: relative;
   padding-left: 12.6875rem;
   margin-bottom: 3.125rem;
-  font-family: 'Raleway';
-  font-style: normal;
+  font-family: "Raleway-Medium";
   font-weight: 500;
+  font-style: normal;
   font-size: 1.5rem;
   line-height: 2.125rem;
   color: #000000;
 }
 
-.no-webp .content__text::before {
+.content__text::before {
   position: absolute;
   content: "";
-  top: 50%;
-  left: 0;
   transform: translateX(-50%);
-  width: 6.9375rem;
-  height: 8.3125rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.no-webp .content__text::before {
   background-image: url(../img/tablet@1x.png);
 }
 
 .webp .content__text::before {
-  position: absolute;
-  content: "";
-  top: 0.875rem;
-  left: 1.625rem;
-  width: 6.9375rem;
-  height: 8.3125rem;
   background-image: url(../img/tablet@1x.webp);
 }
 
 .lawyer-list-title {
   margin-bottom: 2.375rem;
-  font-family: 'Raleway';
+  font-family: "Raleway-Bold";
+  font-weight: 700;
   font-style: normal;
-  font-weight: bold;
   font-size: 1.5rem;
   line-height: 1.875rem;
   color: #000000;
@@ -1426,9 +1487,9 @@ template {
 .lawyer-list__item {
   position: relative;
   margin-bottom: 1.875rem;
-  font-family: 'Raleway';
+  font-family: "Raleway-Regular";
+  font-weight: 400;
   font-style: normal;
-  font-weight: normal;
   font-size: 1.125rem;
   line-height: 1.875rem;
   color: #000000;
@@ -1453,19 +1514,16 @@ template {
 .lawyer-rightcol {
   box-sizing: border-box;
   word-wrap: break-word;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
   word-wrap: break-word;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .man {
   position: relative;
-  width: 37.8125rem;
-  height: 60.875rem;
   margin-top: 6.25rem;
-  background-image: url(../img/man-desktop@1x.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -1473,8 +1531,7 @@ template {
 
 .libra-block {
   position: absolute;
-  bottom: 0;
-  width: 38.125rem;
+  max-width: 38.125rem;
   min-height: 15.25rem;
   margin-left: 1.625rem;
   padding: 4rem 9.625rem 4rem 4rem;
@@ -1484,44 +1541,38 @@ template {
 
 .libra-block__text {
   position: relative;
-  font-family: 'Raleway';
-  font-style: normal;
+  font-family: "Raleway-Medium";
   font-weight: 500;
+  font-style: normal;
   font-size: 1.5rem;
   line-height: 2.125rem;
   color: #000000;
 }
 
-.no-webp .libra-block__text::after {
+.libra-block__text::after {
   position: absolute;
   content: "";
   top: -1.25rem;
   right: -13.375rem;
   width: 10.125rem;
   height: 12.125rem;
-  background-image: url(../img/libra@1x.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+
+.no-webp .libra-block__text::after {
+  background-image: url(../img/libra@1x.png);
 }
 
 .webp .libra-block__text::after {
-  position: absolute;
-  content: "";
-  top: -1.25rem;
-  right: -13.375rem;
-  width: 10.125rem;
-  height: 12.125rem;
   background-image: url(../img/libra@1x.webp);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
 }
 
 .section__title {
-  font-family: 'Playfair Display';
+  font-family: "PlayfairDisplay-Medium";
+  font-weight: 500;
   font-style: normal;
-  font-weight: normal;
   font-size: 4.5rem;
   line-height: 6rem;
 }
@@ -1560,25 +1611,25 @@ template {
 .cards-list {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -5px;
+  margin-right: -5px;
   justify-content: space-between;
 }
 
 .cards__item {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -5px;
+  margin-right: -5px;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
   word-wrap: break-word;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
   word-wrap: break-word;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
   max-width: 30rem;
   min-height: 24.375rem;
 }
@@ -1588,8 +1639,8 @@ template {
   height: 15.3125rem;
   display: flex;
   flex-wrap: wrap;
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -5px;
+  margin-right: -5px;
   justify-content: center;
   align-items: center;
   margin-bottom: 2.4375rem;
@@ -1649,9 +1700,9 @@ template {
 }
 
 .card__text {
-  font-family: 'Raleway';
+  font-family: "Raleway-Regular";
+  font-weight: 400;
   font-style: normal;
-  font-weight: normal;
   font-size: 1.5rem;
   line-height: 2.125rem;
   text-align: center;
@@ -1669,11 +1720,11 @@ template {
 .form-leftcol {
   box-sizing: border-box;
   word-wrap: break-word;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
   word-wrap: break-word;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .advantages-list {
@@ -1685,9 +1736,9 @@ template {
 .advantages__item {
   position: relative;
   margin-bottom: 4rem;
-  font-family: 'Raleway';
+  font-family: "Raleway-Bold";
+  font-weight: 700;
   font-style: normal;
-  font-weight: bold;
   font-size: 1.5rem;
   line-height: 2.125rem;
   color: #ffffff;
@@ -1712,8 +1763,8 @@ template {
 .leftcol-block {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -5px;
+  margin-right: -5px;
   justify-content: center;
   align-items: center;
   width: 38.375rem;
@@ -1725,9 +1776,9 @@ template {
 }
 
 .leftcol-block__text {
-  font-family: 'Raleway';
-  font-style: normal;
+  font-family: "Raleway-Medium";
   font-weight: 500;
+  font-style: normal;
   font-size: 3rem;
   line-height: 2.125rem;
   text-align: center;
@@ -1737,11 +1788,11 @@ template {
 .form-rightcol {
   box-sizing: border-box;
   word-wrap: break-word;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
   word-wrap: break-word;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .second-form-wrap {
@@ -1772,15 +1823,15 @@ template {
 .map {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -5px;
+  margin-right: -5px;
   box-sizing: border-box;
   word-wrap: break-word;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
   word-wrap: break-word;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
   max-width: 96.25rem;
   height: 60.8125rem;
   justify-content: center;
@@ -1822,9 +1873,9 @@ template {
 .contacts__item {
   position: relative;
   margin-bottom: 3.6875rem;
-  font-family: 'Raleway';
+  font-family: "Raleway-Regular";
+  font-weight: 400;
   font-style: normal;
-  font-weight: normal;
   font-size: 1.5rem;
   line-height: 1.875rem;
   color: #000000;
@@ -1899,19 +1950,19 @@ template {
 .footer-leftcol {
   box-sizing: border-box;
   word-wrap: break-word;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
   word-wrap: break-word;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
   margin-left: calc(16.66667% - 5px) !important;
 }
 
 .footer-contacts__item,
 .phone {
-  font-family: 'Raleway';
+  font-family: "Raleway-Bold";
+  font-weight: 700;
   font-style: normal;
-  font-weight: bold;
   font-size: 1.125rem;
   line-height: 2.25rem;
   letter-spacing: 0.04em;
@@ -1921,11 +1972,11 @@ template {
 .footer-rightcol {
   box-sizing: border-box;
   word-wrap: break-word;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
   word-wrap: break-word;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
   margin-left: calc(16.66667% - 5px) !important;
   display: flex;
   flex-direction: column;
@@ -1934,9 +1985,9 @@ template {
 
 .agency-name,
 .policy {
-  font-family: 'Raleway';
+  font-family: "Raleway-Bold";
+  font-weight: 700;
   font-style: normal;
-  font-weight: bold;
   font-size: 1.125rem;
   line-height: 2.125rem;
   text-align: right;
@@ -1950,8 +2001,8 @@ template {
 .social-list {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -5px;
+  margin-right: -5px;
   width: 15.75rem;
   justify-content: space-between;
   margin-bottom: 2.625rem;
@@ -1993,29 +2044,502 @@ template {
   background-image: url(../img/youtube.svg);
 }
 
-@media (min-width: 120rem) {
+@media (min-width: 85.3125rem) and (-webkit-min-device-pixel-ratio: 2), (min-width: 85.3125rem) and (min-resolution: 192dpi) {
   .no-webp .header {
-    background-image: url(../img/header-bg-desktop@1x.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background-image: url(../img/header-bg-laptop-sm@2x.jpg);
   }
 
   .webp .header {
-    background-image: url(../img/header-bg-desktop@1x.webp);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background-image: url(../img/header-bg-laptop-sm@2x.webp);
   }
 }
 
-@media (min-width: 120rem) and (-webkit-min-device-pixel-ratio: 2), (min-width: 120rem) and (min-resolution: 192dpi) {
+@media (min-width: 85.3125rem) {
+  .header {
+    height: 48rem;
+  }
+
+  .no-webp .header {
+    background-image: url(../img/header-bg-laptop-sm@1x.jpg);
+  }
+
+  .webp .header {
+    background-image: url(../img/header-bg-laptop-sm@1x.webp);
+  }
+
+  .nav {
+    margin-left: calc(18.2% - 5px) !important;
+  }
+
+  .nav__link {
+    font-size: 1.0625rem;
+    line-height: 1.3125rem;
+  }
+
+  .phone-number {
+    font-size: 1.625rem;
+    line-height: 2.375rem;
+  }
+
+  .call-order {
+    font-size: 0.8125rem;
+    line-height: 1rem;
+  }
+
+  .no-webp .center-content::before {
+    width: 5.9375rem;
+    height: 1.875rem;
+  }
+
+  .webp .center-content::before {
+    width: 5.9375rem;
+    height: 1.875rem;
+  }
+
+  .no-webp .center-content::after {
+    left: 45%;
+    width: 5.9375rem;
+    height: 1.875rem;
+  }
+
+  .webp .center-content::after {
+    left: 45%;
+    width: 5.9375rem;
+    height: 1.875rem;
+  }
+
+  .main-title {
+    font-size: 4.25rem;
+    line-height: 4.875rem;
+  }
+
+  .main-subtitle {
+    max-width: 23.75rem;
+    font-size: 1.0625rem;
+    line-height: 1.6875rem;
+  }
+}
+
+@media (min-width: 90rem) {
+  .header {
+    height: 56.25rem;
+  }
+
+  .no-webp .header {
+    background-image: url(../img/header-bg-laptop-md@1x.jpg);
+  }
+
+  .webp .header {
+    background-image: url(../img/header-bg-laptop-md@1x.webp);
+  }
+
+  .services__title {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .oval-block__inner {
+    padding: 5.3125rem 1.5625rem 2.5rem 5rem;
+  }
+
+  .lawyer {
+    min-height: 74.875rem;
+  }
+
+  .no-webp .lawyer {
+    background-image: url(../img/lawyer-bg-desktop@1x.jpg);
+  }
+
+  .webp .lawyer {
+    background-image: url(../img/lawyer-bg-desktop@1x.webp);
+  }
+
+  .nav__link {
+    font-size: 1.125rem;
+    line-height: 1.375rem;
+  }
+
+  .phone-number {
+    font-size: 1.6875rem;
+    line-height: 2.4375rem;
+  }
+
+  .call-order {
+    font-size: 0.875rem;
+    line-height: 1.0625rem;
+  }
+
+  .no-webp .center-content::before {
+    width: 6.3125rem;
+    height: 2rem;
+  }
+
+  .webp .center-content::before {
+    width: 6.3125rem;
+    height: 2rem;
+  }
+
+  .no-webp .center-content::after {
+    left: 44.5%;
+    width: 6.3125rem;
+    height: 2rem;
+  }
+
+  .webp .center-content::after {
+    left: 44.5%;
+    width: 6.3125rem;
+    height: 2rem;
+  }
+
+  .main-title {
+    font-size: 4.5rem;
+    line-height: 5.125rem;
+  }
+
+  .main-subtitle {
+    max-width: 25rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .services__item {
+    font-size: 0.875rem;
+    line-height: 1.0625rem;
+  }
+
+  .services__item::before {
+    top: 40%;
+    left: -2.8125rem;
+    font-size: 2.25rem;
+    line-height: 3.25rem;
+  }
+
+  .form__title {
+    font-size: 1.6875rem;
+    line-height: 2.4375rem;
+  }
+
+  .form__subtitle {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+
+  .input-block input::-webkit-input-placeholder,
+  .input-block input::-moz-placeholder,
+  .input-block input::-moz-placeholder,
+  .input-block input::-ms-input-placeholder {
+    font-size: 0.875rem;
+    line-height: 1.0625rem;
+  }
+
+  .form__submit {
+    font-size: 1.125rem;
+    line-height: 1.375rem;
+  }
+
+  .no-webp .form__submit::after {
+    width: 6.3125rem;
+    height: 2rem;
+  }
+
+  .webp .form__submit::after {
+    width: 6.3125rem;
+    height: 2rem;
+  }
+
+  .fingerup-block {
+    padding: 3.4375rem 18.75rem 3.4375rem 3.4375rem;
+  }
+
+  .fingerup-block__text {
+    font-size: 1.6875rem;
+    line-height: 2.4375rem;
+  }
+
+  .webp .fingerup {
+    bottom: 3.375rem;
+    width: 6.6875rem;
+    height: 10.375rem;
+  }
+
+  .content__text::before {
+    top: 0.5rem;
+    left: 5.875rem;
+    width: 5.1875rem;
+    height: 6.25rem;
+  }
+
+  .content__text {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .lawyer-list-title {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+  }
+
+  .lawyer-list__item {
+    font-size: 0.875rem;
+    line-height: 1.625rem;
+  }
+
+  .man {
+    max-width: 100%;
+    height: 58.5rem;
+    background-position: 1px -4%;
+  }
+
+  .no-webp .man {
+    background-image: url(../img/man-desktop@1x.png);
+  }
+
+  .webp .man {
+    background-image: url(../img/man-desktop@1x.webp);
+  }
+
+  .libra-block {
+    bottom: -1.125rem;
+    max-width: 32.8125rem;
+    min-height: 12.5rem;
+    padding: 2.5rem 9.6875rem 2.5rem 2.5rem;
+  }
+
+  .libra-block__text {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .section__title {
+    font-size: 3.375rem;
+    line-height: 4.875rem;
+  }
+}
+
+@media (min-width: 90rem) and (-webkit-min-device-pixel-ratio: 2), (min-width: 90rem) and (min-resolution: 192dpi) {
+  .no-webp .header {
+    background-image: url(../img/header-bg-laptop-md@2x.jpg);
+  }
+
+  .webp .header {
+    background-image: url(../img/header-bg-laptop-md@2x.webp);
+  }
+
+  .no-webp .lawyer {
+    background-image: url(../img/lawyer-bg-desktop@2x.jpg);
+  }
+
+  .webp .lawyer {
+    background-image: url(../img/lawyer-bg-desktop@2x.webp);
+  }
+
+  .no-webp .man {
+    background-image: url(../img/man-desktop@2x.png);
+  }
+
+  .webp .man {
+    background-image: url(../img/man-desktop@2x.webp);
+  }
+}
+
+@media (min-width: 96rem) and (-webkit-min-device-pixel-ratio: 2), (min-width: 96rem) and (min-resolution: 192dpi) {
   .no-webp .header {
     background-image: url(../img/header-bg-desktop@2x.jpg);
   }
 
   .webp .header {
     background-image: url(../img/header-bg-desktop@2x.webp);
+  }
+}
+
+@media (min-width: 96rem) {
+  .no-webp .header {
+    background-image: url(../img/header-bg-desktop@1x.jpg);
+  }
+
+  .webp .header {
+    background-image: url(../img/header-bg-desktop@1x.webp);
+  }
+}
+
+@media (min-width: 120rem) {
+  .header {
+    min-height: 64rem;
+  }
+
+  .services__title {
+    font-size: 3rem;
+    line-height: 4rem;
+  }
+
+  .oval-block__inner {
+    padding: 5.3125rem 1.5625rem 2.5rem 5rem;
+  }
+
+  .lawyer {
+    min-height: 74.875rem;
+  }
+
+  .nav {
+    margin-left: calc(8% - 5px) !important;
+    padding: 0 4.5625rem 0 1.25rem;
+  }
+
+  .nav__link {
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+  }
+
+  .phone-column {
+    margin-right: -0.125rem;
+  }
+
+  .phone-number {
+    margin-bottom: 0.3125rem;
+    font-size: 2.25rem;
+    line-height: 3rem;
+  }
+
+  .call-order {
+    font-size: 1.125rem;
+    line-height: 1.3125rem;
+  }
+
+  .no-webp .center-content::before {
+    width: 8.375rem;
+    height: 2.625rem;
+  }
+
+  .webp .center-content::before {
+    width: 8.375rem;
+    height: 2.625rem;
+  }
+
+  .no-webp .center-content::after {
+    left: 42.8%;
+    width: 8.375rem;
+    height: 2.625rem;
+  }
+
+  .webp .center-content::after {
+    left: 42.8%;
+    width: 8.375rem;
+    height: 2.625rem;
+  }
+
+  .main-title {
+    font-size: 6rem;
+    line-height: 6.625rem;
+  }
+
+  .main-subtitle {
+    max-width: 28.125rem;
+    font-size: 1.5rem;
+    line-height: 2.125rem;
+  }
+
+  .services__item {
+    font-size: 1.125rem;
+    line-height: 1.3125rem;
+  }
+
+  .services__item::before {
+    top: 40%;
+    left: -2.8125rem;
+    font-size: 3rem;
+    line-height: 4rem;
+  }
+
+  .form__title {
+    font-size: 2.25rem;
+    line-height: 3rem;
+  }
+
+  .form__subtitle {
+    font-size: 1.125rem;
+    line-height: 1.625rem;
+  }
+
+  .input-block input::-webkit-input-placeholder,
+  .input-block input::-moz-placeholder,
+  .input-block input::-moz-placeholder,
+  .input-block input::-ms-input-placeholder {
+    font-size: 1.125rem;
+    line-height: 1.3125rem;
+  }
+
+  .form__submit {
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+  }
+
+  .no-webp .form__submit::after {
+    width: 8.375rem;
+    height: 2.625rem;
+  }
+
+  .webp .form__submit::after {
+    width: 8.375rem;
+    height: 2.625rem;
+  }
+
+  .fingerup-block {
+    padding: 3.4375rem 13.125rem 3.4375rem 3.4375rem;
+  }
+
+  .fingerup-block__text {
+    font-size: 2.25rem;
+    line-height: 3rem;
+  }
+
+  .webp .fingerup {
+    bottom: 1.875rem;
+    width: 8.375rem;
+    height: 12.375rem;
+  }
+
+  .content__text::before {
+    top: 50%;
+    width: 6.9375rem;
+    height: 8.3125rem;
+  }
+
+  .content__text {
+    font-size: 1.5rem;
+    line-height: 2.125rem;
+  }
+
+  .lawyer-list-title {
+    font-size: 1.5rem;
+    line-height: 1.875rem;
+  }
+
+  .lawyer-list__item {
+    font-size: 1.125rem;
+    line-height: 1.875rem;
+  }
+
+  .man {
+    max-width: 100%;
+    height: 60.875rem;
+    background-position: 1px -4%;
+  }
+
+  .libra-block {
+    bottom: -1.125rem;
+    max-width: 38.125rem;
+    min-height: 15.25rem;
+    padding: 4rem 9.625rem 4rem 4rem;
+  }
+
+  .libra-block__text {
+    font-size: 1.5rem;
+    line-height: 2.125rem;
+  }
+
+  .section__title {
+    font-size: 4.5rem;
+    line-height: 6rem;
   }
 }
 
@@ -2029,241 +2553,6 @@ template {
     padding-left: 6px;
     padding-right: 6px;
   }
-
-  .oval-block__inner {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .lawyer-cols {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .form-cols {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .form-cols {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .footer-cols {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .footer-leftcols {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .footer-leftcols {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .footer-rightcols {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .footer-rightcols {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .header-top {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .logo {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .logo {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .nav {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .nav {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .nav {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .nav-list {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .nav-list {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .nav-list {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .phone-column {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .phone-column {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .header-center {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .services-leftcol {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .services-leftcol {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .services-rightcol {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .services-rightcol {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .lawyer-leftcol {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .lawyer-leftcol {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .lawyer-rightcol {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .lawyer-rightcol {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .cards-list {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .cards__item {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .cards__item {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .cards__item {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .card__img {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .form-leftcol {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .form-leftcol {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .leftcol-block {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .form-rightcol {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .form-rightcol {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .map {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .map {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .map {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .footer-leftcol {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .footer-leftcol {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .footer-rightcol {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .footer-rightcol {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .social-list {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
 }
 
 @media screen and (min-width: 480px) {
@@ -2276,241 +2565,6 @@ template {
     padding-left: 6px;
     padding-right: 6px;
   }
-
-  .oval-block__inner {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .lawyer-cols {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .form-cols {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .form-cols {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .footer-cols {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .footer-leftcols {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .footer-leftcols {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .footer-rightcols {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .footer-rightcols {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .header-top {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .logo {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .logo {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .nav {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .nav {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .nav {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .nav-list {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .nav-list {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .nav-list {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .phone-column {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .phone-column {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .header-center {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .services-leftcol {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .services-leftcol {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .services-rightcol {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .services-rightcol {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .lawyer-leftcol {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .lawyer-leftcol {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .lawyer-rightcol {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .lawyer-rightcol {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .cards-list {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .cards__item {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .cards__item {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .cards__item {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .card__img {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .form-leftcol {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .form-leftcol {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .leftcol-block {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .form-rightcol {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .form-rightcol {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .map {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
-
-  .map {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .map {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .footer-leftcol {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .footer-leftcol {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .footer-rightcol {
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-  }
-
-  .footer-rightcol {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-  }
-
-  .social-list {
-    margin-left: -1.5px;
-    margin-right: -1.5px;
-  }
 }
 
 @media screen and (min-width: 800px) {
@@ -2522,241 +2576,6 @@ template {
   .container {
     padding-left: 10px;
     padding-right: 10px;
-  }
-
-  .oval-block__inner {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .lawyer-cols {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .form-cols {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .form-cols {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .footer-cols {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .footer-leftcols {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .footer-leftcols {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .footer-rightcols {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .footer-rightcols {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .header-top {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .logo {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .logo {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .nav {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .nav {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .nav {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .nav-list {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .nav-list {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .nav-list {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .phone-column {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .phone-column {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .header-center {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .services-leftcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .services-leftcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .services-rightcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .services-rightcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .lawyer-leftcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .lawyer-leftcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .lawyer-rightcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .lawyer-rightcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .cards-list {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .cards__item {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .cards__item {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .cards__item {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .card__img {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .form-leftcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .form-leftcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .leftcol-block {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .form-rightcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .form-rightcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .map {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .map {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .map {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .footer-leftcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .footer-leftcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .footer-rightcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .footer-rightcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .social-list {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
   }
 }
 
@@ -2771,551 +2590,155 @@ template {
     padding-right: 10px;
   }
 
-  .oval-block__inner {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .lawyer-cols {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .form-cols {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .form-cols {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .footer-cols {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .footer-leftcols {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .footer-leftcols {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .footer-rightcols {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .footer-rightcols {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .header-top {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .logo {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .logo {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
   .nav {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .nav {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .nav {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
+    width: calc(50% - 10px);
   }
 
   .nav-list {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .nav-list {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .nav-list {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
+    width: calc(100% - 10px);
   }
 
   .phone-column {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .phone-column {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .header-center {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
+    width: calc(25% - 10px);
   }
 
   .services-leftcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .services-leftcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
+    width: calc(50% - 10px);
   }
 
   .services-rightcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .services-rightcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
+    width: calc(50% - 10px);
   }
 
   .lawyer-leftcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .lawyer-leftcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
+    width: calc(58.33333% - 10px);
   }
 
   .lawyer-rightcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .lawyer-rightcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .cards-list {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .cards__item {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .cards__item {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .cards__item {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .card__img {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .form-leftcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .form-leftcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .leftcol-block {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .form-rightcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .form-rightcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .map {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .map {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .map {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .footer-leftcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .footer-leftcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .footer-rightcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .footer-rightcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .social-list {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
+    width: calc(41.66667% - 10px);
   }
 }
 
 @media screen and (min-width: 1365px) {
   .container-fluid {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   .container {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .oval-block__inner {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .lawyer-cols {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .form-cols {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .form-cols {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .footer-cols {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .footer-leftcols {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .footer-leftcols {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .footer-rightcols {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .footer-rightcols {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .header-top {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .logo {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .logo {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .nav {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .nav {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .nav {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .nav-list {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .nav-list {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .nav-list {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .phone-column {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .phone-column {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .header-center {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .services-leftcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .services-leftcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .services-rightcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .services-rightcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .lawyer-leftcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .lawyer-leftcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .lawyer-rightcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .lawyer-rightcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .cards-list {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .cards__item {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .cards__item {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .cards__item {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .card__img {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .form-leftcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .form-leftcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .leftcol-block {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .form-rightcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .form-rightcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .map {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
-  }
-
-  .map {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .map {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .footer-leftcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .footer-leftcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .footer-rightcol {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-  }
-
-  .footer-rightcol {
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-  }
-
-  .social-list {
-    margin-left: -2.5px;
-    margin-right: -2.5px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
 
-@media screen and (min-width: 1510px) {
+@media screen and (min-width: 1440px) {
+  .container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@media screen and (min-width: 1540px) {
   .footer-leftcols {
-    width: calc(41.66667% - 5px);
+    width: calc(41.66667% - 10px);
   }
 
   .footer-rightcols {
-    width: calc(25% - 5px);
+    width: calc(25% - 10px);
   }
 
   .logo {
-    width: calc(16.66667% - 5px);
-  }
-
-  .nav {
-    width: calc(50% - 5px);
-  }
-
-  .nav-list {
-    width: calc(100% - 5px);
+    width: calc(16.66667% - 10px);
   }
 
   .phone-column {
-    width: calc(25% - 5px);
-  }
-
-  .services-leftcol {
-    width: calc(50% - 5px);
-  }
-
-  .services-rightcol {
-    width: calc(50% - 5px);
-  }
-
-  .lawyer-leftcol {
-    width: calc(58.33333% - 5px);
-  }
-
-  .lawyer-rightcol {
-    width: calc(41.66667% - 5px);
+    width: calc(25% - 10px);
   }
 
   .cards__item {
-    width: calc(33.33333% - 5px);
+    width: calc(33.33333% - 10px);
   }
 
   .form-leftcol {
-    width: calc(50% - 5px);
+    width: calc(50% - 10px);
   }
 
   .form-rightcol {
-    width: calc(50% - 5px);
+    width: calc(50% - 10px);
   }
 
   .map {
-    width: calc(100% - 5px);
+    width: calc(100% - 10px);
   }
 
   .footer-leftcol {
-    width: calc(41.66667% - 5px);
+    width: calc(41.66667% - 10px);
   }
 
   .footer-rightcol {
-    width: calc(25% - 5px);
+    width: calc(25% - 10px);
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .no-webp .services {
+    background: linear-gradient(334.13deg, #EBDCD4 8.31%, rgba(235, 221, 213, 0) 84.2%), url(../img/services-bg-desktop@2x.png);
+  }
+
+  .webp .services {
+    background: linear-gradient(334.13deg, #EBDCD4 8.31%, rgba(235, 221, 213, 0) 84.2%), url(../img/services-bg-desktop@2x.webp);
+  }
+
+  .no-webp .center-content::before {
+    background-image: url(../img/header-decor@2x.png);
+  }
+
+  .webp .center-content::before {
+    background-image: url(../img/header-decor@2x.webp);
+  }
+
+  .no-webp .center-content::after {
+    background-image: url(../img/header-decor@2x.png);
+  }
+
+  .webp .center-content::after {
+    background-image: url(../img/header-decor@2x.webp);
+  }
+
+  .no-webp .form__submit::after {
+    background-image: url(../img/header-decor@2x.png);
+  }
+
+  .webp .form__submit::after {
+    background-image: url(../img/header-decor@2x.webp);
+  }
+
+  .no-webp .fingerup {
+    background-image: url(../img/fingerup@2x.png);
+  }
+
+  .webp .fingerup {
+    background-image: url(../img/fingerup@2x.webp);
+  }
+
+  .no-webp .content__text::before {
+    background-image: url(../img/tablet@2x.png);
+  }
+
+  .webp .content__text::before {
+    background-image: url(../img/tablet@2x.webp);
+  }
+
+  .no-webp .libra-block__text::after {
+    background-image: url(../img/libra@2x.png);
+  }
+
+  .webp .libra-block__text::after {
+    background-image: url(../img/libra@2x.webp);
   }
 }
