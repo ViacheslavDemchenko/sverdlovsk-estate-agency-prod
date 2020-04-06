@@ -2006,6 +2006,11 @@ template {
     margin: 0 auto 2.8125rem auto;
   }
 
+  .oval-block::after {
+    top: 0;
+    height: 100%;
+  }
+
   .oval-block::before {
     top: -7.6875rem;
     height: 7.6875rem;
@@ -2190,11 +2195,6 @@ template {
 
   .webp .header {
     background-image: url(../img/header-bg-laptop-md@1x.webp);
-  }
-
-  .oval-block::after {
-    top: 0;
-    height: 100%;
   }
 
   .lawyer {
