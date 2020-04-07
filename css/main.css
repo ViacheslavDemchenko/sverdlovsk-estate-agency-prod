@@ -1868,10 +1868,6 @@ template {
     background-image: url(../img/form-bg-sm@1x.webp);
   }
 
-  .contacts {
-    min-height: 73.75rem;
-  }
-
   .contacts::after {
     height: 3.1875rem;
   }
@@ -2269,14 +2265,13 @@ template {
   .map {
     margin-top: 1.5625rem;
     max-width: 96.25rem;
-    height: 60.8125rem;
+    height: 46.875rem;
     margin-bottom: 3.1875rem;
   }
 
   .map__inner {
     width: 98%;
-    max-width: 89.9375rem;
-    height: 57.8125rem;
+    height: 94%;
   }
 
   .contacts-block {
@@ -2470,10 +2465,6 @@ template {
 
   .webp .form {
     background-image: url(../img/form-bg-md@1x.webp);
-  }
-
-  .contacts {
-    min-height: 73.75rem;
   }
 
   .contacts::after {
@@ -2859,13 +2850,12 @@ template {
   .map {
     margin: 1.5625rem 0 0 0;
     max-width: 96.25rem;
-    height: 60.8125rem;
+    height: 46.875rem;
   }
 
   .map__inner {
     width: 98%;
-    max-width: 89.9375rem;
-    height: 57.8125rem;
+    height: 94%;
   }
 
   .contacts-block {
@@ -2984,10 +2974,6 @@ template {
 
   .webp .form {
     background-image: url(../img/form-bg-lg@1x.webp);
-  }
-
-  .contacts {
-    min-height: 75rem;
   }
 
   .form {
@@ -3139,6 +3125,7 @@ template {
 
   .map {
     margin-top: 1.6875rem;
+    height: 53.125rem;
   }
 
   .contacts-block {
@@ -3287,10 +3274,6 @@ template {
 
   .webp .form {
     background-image: url(../img/form-bg-xlg@1x.webp);
-  }
-
-  .contacts {
-    min-height: 78.0625rem;
   }
 
   .contacts::after {
