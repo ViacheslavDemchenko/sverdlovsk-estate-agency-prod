@@ -1127,7 +1127,6 @@ template {
 .services__item {
   position: relative;
   min-height: 4rem;
-  border-bottom: 0.0625rem solid rgba(78, 54, 41, 0.1);
   font-family: "Raleway-Medium";
   font-weight: 500;
   font-style: normal;
@@ -1141,6 +1140,15 @@ template {
   font-weight: 500;
   font-style: normal;
   color: #F4BA47;
+}
+
+.services__item::after {
+  position: absolute;
+  content: "";
+  bottom: -1.75rem;
+  left: 2.125rem;
+  height: 0.0625rem;
+  background-color: rgba(78, 54, 41, 0.1);
 }
 
 .services__item:nth-child(1)::before {
@@ -1891,6 +1899,10 @@ template {
 }
 
 @media (min-width: 85.3125rem) {
+  .container--contacts {
+    padding-bottom: 3rem;
+  }
+
   .header {
     height: 48rem;
   }
@@ -1956,7 +1968,7 @@ template {
   }
 
   .contacts::after {
-    height: 2.0625rem;
+    height: 3rem;
   }
 
   .form {
@@ -2034,6 +2046,10 @@ template {
     left: -2.8125rem;
     font-size: 2.25rem;
     line-height: 3.25rem;
+  }
+
+  .services__item::after {
+    width: 17.1875rem;
   }
 
   .services__item:nth-child(2) {
@@ -2386,6 +2402,24 @@ template {
   }
 }
 
+@media (min-width: 90rem) and (-webkit-min-device-pixel-ratio: 2), (min-width: 90rem) and (min-resolution: 192dpi) {
+  .no-webp .header {
+    background-image: url(../img/header-bg-laptop-md@2x.jpg);
+  }
+
+  .webp .header {
+    background-image: url(../img/header-bg-laptop-md@2x.webp);
+  }
+
+  .no-webp .lawyer {
+    background-image: url(../img/lawyer-bg-laptop-md@2x.webp);
+  }
+
+  .webp .lawyer {
+    background-image: url(../img/lawyer-bg-laptop-md@2x.webp);
+  }
+}
+
 @media (min-width: 90rem) {
   .header {
     height: 56.25rem;
@@ -2421,10 +2455,6 @@ template {
 
   .contacts {
     min-height: 75rem;
-  }
-
-  .contacts::after {
-    height: 3rem;
   }
 
   .form {
@@ -2582,24 +2612,6 @@ template {
   }
 }
 
-@media (min-width: 90rem) and (-webkit-min-device-pixel-ratio: 2), (min-width: 90rem) and (min-resolution: 192dpi) {
-  .no-webp .header {
-    background-image: url(../img/header-bg-laptop-md@2x.jpg);
-  }
-
-  .webp .header {
-    background-image: url(../img/header-bg-laptop-md@2x.webp);
-  }
-
-  .no-webp .lawyer {
-    background-image: url(../img/lawyer-bg-laptop-md@2x.webp);
-  }
-
-  .webp .lawyer {
-    background-image: url(../img/lawyer-bg-laptop-md@2x.webp);
-  }
-}
-
 @media (min-width: 96rem) and (-webkit-min-device-pixel-ratio: 2), (min-width: 96rem) and (min-resolution: 192dpi) {
   .no-webp .header {
     background-image: url(../img/header-bg-desktop@2x.jpg);
@@ -2620,17 +2632,11 @@ template {
   }
 }
 
-@media (min-width: 120rem) and (-webkit-min-device-pixel-ratio: 2), (min-width: 120rem) and (min-resolution: 192dpi) {
-  .no-webp .lawyer {
-    background-image: url(../img/lawyer-bg-desktop@2x.webp);
-  }
-
-  .webp .lawyer {
-    background-image: url(../img/lawyer-bg-desktop@2x.webp);
-  }
-}
-
 @media (min-width: 120rem) {
+  .container--contacts {
+    padding-bottom: 5.5rem;
+  }
+
   .header {
     min-height: 64rem;
   }
@@ -2761,6 +2767,10 @@ template {
     line-height: 4rem;
   }
 
+  .services__item::after {
+    width: 24.6875rem;
+  }
+
   .services__item:nth-child(1) {
     padding: 2.25rem 0 0 2.1875rem;
   }
@@ -2833,7 +2843,7 @@ template {
   }
 
   .form__subtitle {
-    max-width: 24.6875rem;
+    max-width: 25rem;
     margin: 0 auto 2.25rem auto;
     font-size: 1.125rem;
     line-height: 1.625rem;
@@ -3111,6 +3121,16 @@ template {
   .social__link {
     width: 2.25rem;
     height: 2.25rem;
+  }
+}
+
+@media (min-width: 120rem) and (-webkit-min-device-pixel-ratio: 2), (min-width: 120rem) and (min-resolution: 192dpi) {
+  .no-webp .lawyer {
+    background-image: url(../img/lawyer-bg-desktop@2x.webp);
+  }
+
+  .webp .lawyer {
+    background-image: url(../img/lawyer-bg-desktop@2x.webp);
   }
 }
 
