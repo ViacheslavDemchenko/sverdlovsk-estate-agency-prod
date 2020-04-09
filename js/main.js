@@ -156,6 +156,240 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
   e.Modernizr = Modernizr;
 }(window, document);
+// ;(function (){
+// /* ПРОВЕРКА ПОЛЯ ИМЕНИ И СООБЩЕНИЯ НА ВВОД КИРИЛЛИЦЫ */
+//     function nameAndEmailCheck() {
+//         //Функия принимает в качестве параметров id и регулярное выражение
+//         function inputCheck(id, regex) {
+//         //Первым параметром является выбранный по id элемент
+//         let element = document.getElementById(id);
+//         if (element) {
+//             let lastValue = element.value; //Получение значения инпута
+//             if (!regex.test(lastValue)) {
+//             //Проверка соответтсвия значения инпута регулярному выражению
+//             lastValue = ''; //В случае несоответтсвия инпут очищается
+//             }
+//             setInterval(function () {
+//             //Функия проверки срабатывает через заданный интервал
+//             let value = element.value; //Присвоение переменной значения инпута
+//             if (value != lastValue) {
+//                 //Сравнение текущего и последнего значения инпута
+//                 if (regex.test(value)) {
+//                 //В случае соответсвия значения инпута реугялрному выражению
+//                 lastValue = value; //Предыдущее значение инпута принимает его текущее значение
+//                 } else {
+//                 element.value = lastValue; //В противном случае значение инпута становится равным последнему значению
+//                 }
+//             }
+//             }, 10); //Интервал срабатывания функции
+//         }
+//         }
+//         ; //Проверка поля ввода имени в popup-design
+//         inputCheck('name-first', /^[а-яёА-яЁ\s]*$/); 
+//         inputCheck('name-second', /^[а-яёА-яЁ\s]*$/); 
+//         // inputCheck('email-first', /^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z])+$/); 
+//         // inputCheck('email-second', /^[A-z0-9_.-]{1,}@([A-z0-9_.-]{1,}).([A-z]{2,8})*$/); 
+//     }
+//     nameAndEmailCheck();
+//     const myMail = document.getElementById('email-first');
+//     const re = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
+//     console.log(myMail);
+//     function validMail() {
+//         myMail.addEventListener('keyup', () => {
+//             let myMailValue = myMail.value;
+//             console.log(myMailValue);
+//             let valid = re.test(myMailValue);
+//             if (valid) {
+//                 console.log('valid');
+//             } else {
+//                 console.log('not valid');
+//             }
+//             return valid;
+//         });
+//     }
+//     validMail();
+// })();
+"use strict";
+"use strict";
+
+;
+
+(function () {
+  //Задаем инпут
+  var input_1 = document.querySelector('.phone-first');
+  var input_2 = document.querySelector('.phone-second'); //Функция маски инпута
+
+  function setMask(event) {
+    //Задаем в переменную нажатую клавишу
+    var pressedKey; //Условие, проверяющее нажатую клавишу
+
+    event.keyCode && pressedKey === event.keyCode; //Задаем в переменную позицию в инпуте, с которой будет доступен ввод цифр
+
+    var numberPos = this.selectionStart; //Устанавливаем возможность ввода цифр с третьей позиции       
+
+    if (numberPos < 3) {
+      event.preventDefault();
+    } //Задаем внешний вид маски инпута
+
+
+    var maskType = '+7 (___) ___-__-__',
+        i = 0,
+        //Проверка и замена value инпута по буквенно
+    replaceValue = maskType.replace(/\D/g, ''),
+        prevValue = this.value.replace(/\D/g, ''),
+        currentValue = maskType.replace(/[_\d]/g, function (a) {
+      return i < prevValue.length ? prevValue.charAt(i++) || replaceValue.charAt(i) : a;
+    }); //Защита от стирания первых двух цифр (+7)            
+
+    i = currentValue.indexOf('_');
+
+    if (i != -1) {
+      i < 5 && (i = 3);
+      currentValue = currentValue.slice(0, i);
+    } //Регулярное выражение для проверки value инпута        
+
+
+    var reg = maskType.substr(0, this.value.length).replace(/_+/g, function (a) {
+      return '\\d{1,' + a.length + '}';
+    }).replace(/[+()]/g, '\\$&');
+    reg = new RegExp('^' + reg + '$'); //Проверка содержимого инпута на регулярное выражение, длинну и нажимаемые клавиши
+
+    if (!reg.test(this.value) || this.value.length < 5 || pressedKey > 47 && pressedKey < 58) {
+      this.value = currentValue;
+    } else if (event.type === 'blur' && this.value.length < 5) {
+      this.value = '';
+    } // Устанавливаем курсор в конец строки в инпуте, если при нажатии кнопки он стоит не в конце
+
+
+    input_1.setSelectionRange(input_1.value.length, input_1.value.length);
+    input_2.setSelectionRange(input_2.value.length, input_2.value.length);
+  } //Запуск функции setMask через обработчик событий
+
+
+  input_1.addEventListener('input', setMask, false);
+  input_1.addEventListener('focus', setMask, false);
+  input_1.addEventListener('blur', setMask, false);
+  input_1.addEventListener('keydown', setMask, false);
+  input_2.addEventListener('input', setMask, false);
+  input_2.addEventListener('focus', setMask, false);
+  input_2.addEventListener('blur', setMask, false);
+  input_2.addEventListener('keydown', setMask, false);
+})();
+"use strict";
+
+;
+
+(function () {
+  //Передача в переменную всех элементов html на странице
+  var elements = document.documentElement,
+      body = document.body,
+      //Передаем в переменную body
+  links = document.links; //Получаем все якорные ссылки на странице
+  //Функция опредления нажатой ссылки и расчета перемещения
+
+  function calcScroll() {
+    //Перебор циклом все ссылок и определение той, на которой был сделан клик
+    for (var i = 0; i < links.length; i++) {
+      links[i].onclick = function () {
+        var event = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.event;
+        // event = event || window.event;//Кросс-браузерность
+        //Определение и округление текущего расстояния от верха документа
+        var scrollTop = Math.round(body.scrollTop || elements.scrollTop);
+
+        if (this.hash !== '') {
+          //Предотвращение действия браузера по дефолту при отсутвии атрибута hash у элемента
+          event.preventDefault(); //Получение элемента, к которому ведет якорь нажатой ссылки
+
+          var targetElement = document.getElementById(this.hash.substring(1)),
+              //Задел в 80px, чтобы при прокрутке меню не закрывало заголовок секции
+          targetElementTop = 0; //Вычисление через цикл расстояния от верха до элемента, к которому ведет нажатая ссылка
+
+          while (targetElement.offsetParent) {
+            targetElementTop += targetElement.offsetTop;
+            targetElement = targetElement.offsetParent;
+          } //Получение округленного значения расположения элемента
+
+
+          targetElementTop = Math.round(targetElementTop);
+          /* Функция запуска плавного перемещения (содержит аргументы: текущее растояние от верха
+          документа, расстояние от верха документа к контентному блоку, к которому ведет нажатая 
+          ссылка и сам контентный блок) */
+
+          if (document.body.style.overflow !== 'hidden') {
+            //Предотвращает прокрутку при открытом модальном окне
+            smoothScroll(scrollTop, targetElementTop, this.hash);
+          }
+        }
+      };
+    }
+  }
+
+  ;
+  calcScroll();
+  var timeInterval = 1,
+      //Задаем временной интервал в 1 миллисекунду
+  prevScrollTop,
+      speed; //Функция плавной прокрутки
+
+  function smoothScroll(from, to, hash) {
+    /* Если элемент (конечная точка движения) расположен ниже текущей точки экрана,
+    то scroll ведется с верху вниз (положительное значение), если наоборот, то снизу
+    вверх (отрицательное значение) */
+    if (to > from) {
+      speed = 10;
+    } else {
+      speed = -10;
+    } //Установка интервала движения
+
+
+    var move = setInterval(function () {
+      //Получение и округение текущей позиции экрана
+      var scrollTop = Math.round(body.scrollTop || elements.scrollTop); //Условия прекращения или продолжения движения
+
+      if (prevScrollTop === scrollTop || to > from && scrollTop >= to || to < from && scrollTop <= to) {
+        clearInterval(move); //Добавление атрибута hash в url после прокрутки (добавляется к адресной строке в браузере)
+
+        history.replaceState(history.state, document.title, location.href.replace(/#.*$/g, '') + hash);
+      } else {
+        body.scrollTop += speed;
+        elements.scrollTop += speed;
+        /* Передача текущей позиции экрана в переменную, которая при последующих перемещениях
+        будет играть роль места хранения последней позиции экрана */
+
+        prevScrollTop = scrollTop;
+      }
+    }, timeInterval); //Передача ранее установленного интервала перемещения
+  }
+})();
+"use strict";
+
+;
+
+(function () {
+  ymaps.ready(init);
+  var myMap, myPlacemark;
+
+  function init() {
+    myMap = new ymaps.Map('yandex-map', {
+      center: [56.894897, 60.639363],
+      zoom: 16
+    });
+    myMap.behaviors.enable('scrollZoom');
+    myMap.behaviors.enable('drag'); // myMap.behaviors.disable('scrollZoom');
+    // myMap.behaviors.disable('drag');
+    // myMap.events.add('click', () => {
+    //     myMap.behaviors.enable('scrollZoom');
+    //     myMap.behaviors.enable('drag');
+    // });
+
+    myPlacemark = new ymaps.Placemark([56.894897, 60.639363], {}, {
+      iconLayout: 'default#image',
+      iconImageHref: 'img/libra@2x.png',
+      iconImageSize: [70, 70]
+    });
+    myMap.geoObjects.add(myPlacemark);
+  }
+})();
 "use strict";
 
 /*!

@@ -22,15 +22,16 @@
             <div class="logo"> <a class="logo__link" href="#">LOGO</a></div>
             <nav class="nav">
               <ul class="nav-list">
-                <li class="nav__item"><a class="nav__link" href="#">Что мы можем?</a></li>
-                <li class="nav__item"><a class="nav__link" href="#">Юридический отдел</a></li>
-                <li class="nav__item"><a class="nav__link" href="#">Контакты</a></li>
+                <li class="nav__item"><a class="nav__link" href="#services">Что мы можем?</a></li>
+                <li class="nav__item"><a class="nav__link" href="#lawyer">Юридический отдел</a></li>
+                <li class="nav__item"><a class="nav__link" href="#contacts">Контакты</a></li>
               </ul>
             </nav>
             <ul class="phone-column">
-              <li class="phone-number">+7(999)123-12-12</li>
+              <li class="phone-number"><a class="phone__link" href="tel:+73432693201" aria-label="Позвонить">+7 (343) 269 32 01</a></li>
               <li class="call-order">Заказать обратный звонок</li>
             </ul>
+            <button class="cmn-toggle-switch cmn-toggle-switch__htx" area-label="Открыть мобильное меню" id="menu__button"><span>toggle menu</span></button>
           </div>
           <div class="header-center">
             <div class="center-content">
@@ -44,10 +45,11 @@
             <li class="pagination__item"></li>
             <li class="pagination__item"></li>
             <li class="pagination__item"></li>
+            <li class="pagination__item"></li>
           </ul>
         </div>
       </header>
-      <section class="services">
+      <section class="services" id="services">
         <div class="container container--lines-dark">
           <h2 class="services__title">Что мы можем?</h2>
           <div class="oval-block">
@@ -62,6 +64,21 @@
                   <li class="services__item">Оперативно выкупаем доли в недвижимости</li>
                   <li class="services__item">Гарантируем профессиональное юридическое сопровождение каждой сделки</li>
                 </ul>
+                <div class="services-list--xss">
+                  <div class="services__item-block">
+                    <p class="services__item--xss services__item--xss--beige services__item--xss--first">Помогаем покупать и продавать любую недвижимость </p>
+                    <p class="services__item--xss services__item--xss--second">Помогаем оформить ипотеку при сделке между ближайщими родственниками</p>
+                  </div>
+                  <div class="services__item-block">
+                    <p class="services__item--xss services__item--xss--third">Проводим сложные многоходовые сделки по обмену жилья</p>
+                    <p class="services__item--xss services__item--xss--beige services__item--xss--fourth">В наличии полная актуальная база  новостроек</p>
+                  </div>
+                  <div class="services__item--xss services__item--xss-center services__item--xss--fifth">Помогаем быстро и грамотно оформлять сделки по ипотеке и приватизации, в том числе с материнским капиталом</div>
+                  <div class="services__item-block">
+                    <p class="services__item--xss services__item--xss--beige services__item--xss--sixth">Оперативно выкупаем доли в недвижимости</p>
+                    <p class="services__item--xss services__item--xss--seventh">Гарантируем профессиональное юридическое сопровождение каждой сделки</p>
+                  </div>
+                </div>
               </div>
               <div class="services-rightcol">
                 <div class="first-form-wrap">
@@ -72,16 +89,16 @@
                     </legend>
                     <div class="input-blocks-wrap">
                       <div class="input-block">
-                        <input id="name" type="text" name="name" placeholder="Ваше имя" required>
+                        <input class="name-first" id="name-first" type="text" name="name" placeholder="Ваше имя" required>
                       </div>
                       <div class="input-block">
-                        <input id="phone" type="text" name="phone" placeholder="Ваш телефон" required>
+                        <input class="phone-first" id="phone-first" type="text" name="phone" placeholder="Ваш телефон" required>
                       </div>
                       <div class="input-block">
-                        <input id="email" type="email" name="email" placeholder="Ваша почта" required>
+                        <input class="email-first" id="email-first" type="email" name="email" placeholder="Ваша почта" required>
                       </div>
-                      <button class="form__submit" type="submit" id="first-form__submit">Заказать консультацию</button>
                     </div>
+                    <button class="form__submit" type="submit" id="first-form__submit">Заказать консультацию</button>
                   </form>
                 </div>
               </div>
@@ -97,10 +114,11 @@
             <li class="pagination__item"></li>
             <li class="pagination__item"></li>
             <li class="pagination__item"></li>
+            <li class="pagination__item"></li>
           </ul>
         </div>
       </section>
-      <section class="lawyer">
+      <section class="lawyer" id="lawyer">
         <div class="container container--lines-light">
           <div class="lawyer-cols">
             <div class="lawyer-leftcol">
@@ -129,6 +147,14 @@
               </div>
             </div>
           </div>
+          <ul class="pagination-list">
+            <li class="pagination__item"></li>
+            <li class="pagination__item"></li>
+            <li class="pagination__item pagination__item__active"></li>
+            <li class="pagination__item"></li>
+            <li class="pagination__item"></li>
+            <li class="pagination__item"></li>
+          </ul>
         </div>
       </section>
       <section class="proud">
@@ -156,6 +182,14 @@
               </div>
             </div>
           </div>
+          <ul class="pagination-list">
+            <li class="pagination__item"></li>
+            <li class="pagination__item"></li>
+            <li class="pagination__item"></li>
+            <li class="pagination__item pagination__item__active"></li>
+            <li class="pagination__item"></li>
+            <li class="pagination__item"></li>
+          </ul>
         </div>
       </section>
       <section class="form">
@@ -183,29 +217,37 @@
                       </legend>
                       <div class="input-blocks-wrap">
                         <div class="input-block">
-                          <input id="name" type="text" name="name" placeholder="Ваше имя" required>
+                          <input class="name-second" id="name-second" type="text" name="name" placeholder="Ваше имя" required>
                         </div>
                         <div class="input-block">
-                          <input id="phone" type="text" name="phone" placeholder="Ваш телефон" required>
+                          <input class="phone-second" id="phone-second" type="text" name="phone" placeholder="Ваш телефон" required>
                         </div>
                         <div class="input-block">
-                          <input id="email" type="email" name="email" placeholder="Ваша почта" required>
+                          <input class="email-second" id="email-second" type="email" name="email" placeholder="Ваша почта" required>
                         </div>
-                        <button class="form__submit" type="submit" id="second-form__submit">Заказать консультацию</button>
                       </div>
+                      <button class="form__submit" type="submit" id="second-form__submit">Заказать консультацию</button>
                     </form>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <ul class="pagination-list">
+            <li class="pagination__item"></li>
+            <li class="pagination__item"></li>
+            <li class="pagination__item"></li>
+            <li class="pagination__item"></li>
+            <li class="pagination__item pagination__item__active"></li>
+            <li class="pagination__item"></li>
+          </ul>
         </div>
       </section>
       <section class="contacts">
-        <div class="container container--lines-dark container--contacts">
+        <div class="container container--lines-dark container--contacts" id="contacts">
           <div class="section__title section__title--black section__title--contacts">Контакты</div>
           <div class="map">
-            <div class="map__inner">
+            <div class="map__inner" id="yandex-map" aria-label="Свердловская обл., г. Екатеринбург, Черноморский переулок, д. 4, кв. 22">
               <div class="contacts-block">
                 <ul class="contacts-list">
                   <li class="contacts__item">Номер телефона</li>
@@ -215,10 +257,19 @@
               </div>
             </div>
           </div>
+          <ul class="pagination-list">
+            <li class="pagination__item"></li>
+            <li class="pagination__item"></li>
+            <li class="pagination__item"></li>
+            <li class="pagination__item"></li>
+            <li class="pagination__item"></li>
+            <li class="pagination__item pagination__item__active"></li>
+          </ul>
         </div>
       </section>
       <footer class="footer">
         <div class="container">
+          <div class="logo-footer"><a class="logo-footer__link" href="#">LOGO</a></div>
           <div class="footer-cols">
             <div class="footer-leftcol">
               <ul class="footer-contacts-list">
@@ -226,7 +277,7 @@
                 <li class="footer-contacts__item">ИНН 6686112820</li>
                 <li class="footer-contacts__item">ОГРН 1196658009041</li>
                 <li class="footer-contacts__item">Юр.адрес: 620057, Свердловская обл., г. Екатеринбург, Черноморский переулок, д. 4, кв. 22</li>
-                <li class="footer-contacts__item"><a class="phone" href="tel:+73432693201">Тел.: +7 (343) 269 32 01</a></li>
+                <li class="footer-contacts__item"><a class="phone" href="tel:+73432693201" aria-label="Позвонить">Тел.: +7 (343) 269 32 01</a></li>
               </ul>
             </div>
             <div class="footer-rightcol">
@@ -235,10 +286,10 @@
                 <p>Digital agency Blackcode</p>
               </div>
               <ul class="social-list">
-                <li class="social__item instagram"><a class="social__link" href="#" target="_blank" rel="nofollow noopener" aria-label="Инстаграм"></a></li>
-                <li class="social__item facebook"><a class="social__link" href="#" target="_blank" rel="nofollow noopener" aria-label="Фейсбук"></a></li>
-                <li class="social__item vk"><a class="social__link" href="#" target="_blank" rel="nofollow noopener" aria-label="Вконтакте"></a></li>
-                <li class="social__item youtube"><a class="social__link" href="#" target="_blank" rel="nofollow noopener" aria-label="Ютуб"></a></li>
+                <li class="social__item"><a class="social__link instagram" href="#" target="_blank" rel="nofollow noopener" aria-label="Инстаграм"></a></li>
+                <li class="social__item"><a class="social__link facebook" href="#" target="_blank" rel="nofollow noopener" aria-label="Фейсбук"></a></li>
+                <li class="social__item"><a class="social__link vk" href="#" target="_blank" rel="nofollow noopener" aria-label="Вконтакте"></a></li>
+                <li class="social__item"><a class="social__link youtube" href="#" target="_blank" rel="nofollow noopener" aria-label="Ютуб"></a></li>
               </ul>
               <div class="policy">Политика конфиденциальности</div>
             </div>
@@ -248,4 +299,5 @@
     </div>
   </body>
 </html>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
 <script src="js/main.js"></script>
