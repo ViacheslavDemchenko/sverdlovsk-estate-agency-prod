@@ -4301,6 +4301,7 @@ template {
   .map {
     margin-top: 1.6875rem;
     height: 48.125rem;
+    margin: auto;
   }
 
   .contacts-block {
