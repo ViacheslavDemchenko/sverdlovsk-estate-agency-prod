@@ -215,6 +215,80 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 ;
 
 (function () {
+  var hamburger = document.getElementById('menu__button');
+  var nav = document.querySelector('.nav');
+  var navList = document.querySelector('.nav-list');
+  var menuLinks = document.querySelectorAll('.nav__link');
+  var body = document.getElementsByTagName('body')[0]; // const logoText = document.querySelector('.logo__link');
+  // const social = document.querySelector('.social-list');
+  // const mobileBtn = document.querySelector('.mobile-menu__btn');
+  // const socialLinks = document.querySelectorAll('.social__icon');
+
+  var screenWidth = window.screen.availWidth;
+  var timerShow;
+  hamburger.addEventListener('click', mobileMenu);
+
+  function mobileMenuLinkClick() {
+    menuLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (screenWidth < 1024) {
+          mobileMenuHide();
+        }
+      });
+    });
+  }
+
+  mobileMenuLinkClick();
+
+  function mobileMenu() {
+    if (!hamburger.classList.contains('active')) {
+      // timerShow = setTimeout(menuLinksShow, 500);
+      hamburger.classList.add('active');
+      nav.classList.add('nav--open');
+      navList.classList.add('nav-list--open');
+      body.classList.add('no-scroll');
+    } else {
+      mobileMenuHide();
+    }
+  }
+
+  function mobileMenuHide() {
+    // setTimeout(menuLinksHide, 250);
+    hamburger.classList.remove('active');
+    nav.classList.remove('nav--open');
+    navList.classList.remove('nav-list--open');
+    body.classList.remove('no-scroll');
+  }
+
+  function menuLinksShow() {
+    menuLinks.forEach(function (link) {
+      link.style.opacity = '1';
+    });
+  }
+
+  function menuLinksHide() {
+    menuLinks.forEach(function (link) {
+      link.style.opacity = '0';
+    });
+  }
+
+  window.addEventListener('resize', function () {
+    screenWidth = window.screen.availWidth;
+
+    if (screenWidth > 1024) {
+      menuLinksShow();
+      hamburger.classList.remove('active');
+      nav.classList.remove('nav--open');
+      navList.classList.remove('nav-list--open');
+      body.classList.remove('no-scroll');
+    }
+  });
+})();
+"use strict";
+
+;
+
+(function () {
   //Задаем инпут
   var input_1 = document.querySelector('.phone-first');
   var input_2 = document.querySelector('.phone-second'); //Функция маски инпута
