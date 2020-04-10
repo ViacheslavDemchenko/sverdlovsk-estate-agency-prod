@@ -215,6 +215,49 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 ;
 
 (function () {
+  var modalBtn = document.getElementById('modal-btn');
+  var modal = document.getElementById('modal');
+  var modalClose = document.querySelector('.close');
+  var body = document.getElementsByTagName('body')[0];
+  var modalOverlay = document.querySelector('.modal-overlay');
+  modalBtn.addEventListener('click', showHeaderModal);
+  modalClose.addEventListener('click', hideHeaderModal);
+  document.addEventListener('keydown', eschideHeaderModal);
+  document.addEventListener('click', clickhideHeaderModal);
+
+  function showHeaderModal() {
+    if (modal.style.display !== 'flex') {
+      modal.style.display = 'flex';
+      modalOverlay.style.display = 'block';
+      body.classList.add('no-scroll');
+    }
+  }
+
+  function hideHeaderModal() {
+    modal.style.display = 'none';
+    modalOverlay.style.display = 'none';
+    body.classList.remove('no-scroll');
+  }
+
+  function eschideHeaderModal(e) {
+    if (e.keyCode === 27) {
+      hideHeaderModal();
+    }
+  }
+
+  function clickhideHeaderModal(e) {
+    var target = e.target;
+
+    if (target == modalOverlay) {
+      hideHeaderModal();
+    }
+  }
+})();
+"use strict";
+
+;
+
+(function () {
   var hamburger = document.getElementById('menu__button');
   var nav = document.querySelector('.nav');
   var navList = document.querySelector('.nav-list');
@@ -445,7 +488,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
   function init() {
     myMap = new ymaps.Map('yandex-map', {
-      center: [56.894897, 60.639363],
+      center: [56.895897, 60.639363],
       zoom: 16
     });
     myMap.behaviors.enable('scrollZoom');
