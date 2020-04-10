@@ -156,60 +156,141 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
   e.Modernizr = Modernizr;
 }(window, document);
-// ;(function (){
-// /* ПРОВЕРКА ПОЛЯ ИМЕНИ И СООБЩЕНИЯ НА ВВОД КИРИЛЛИЦЫ */
-//     function nameAndEmailCheck() {
-//         //Функия принимает в качестве параметров id и регулярное выражение
-//         function inputCheck(id, regex) {
-//         //Первым параметром является выбранный по id элемент
-//         let element = document.getElementById(id);
-//         if (element) {
-//             let lastValue = element.value; //Получение значения инпута
-//             if (!regex.test(lastValue)) {
-//             //Проверка соответтсвия значения инпута регулярному выражению
-//             lastValue = ''; //В случае несоответтсвия инпут очищается
-//             }
-//             setInterval(function () {
-//             //Функия проверки срабатывает через заданный интервал
-//             let value = element.value; //Присвоение переменной значения инпута
-//             if (value != lastValue) {
-//                 //Сравнение текущего и последнего значения инпута
-//                 if (regex.test(value)) {
-//                 //В случае соответсвия значения инпута реугялрному выражению
-//                 lastValue = value; //Предыдущее значение инпута принимает его текущее значение
-//                 } else {
-//                 element.value = lastValue; //В противном случае значение инпута становится равным последнему значению
-//                 }
-//             }
-//             }, 10); //Интервал срабатывания функции
-//         }
-//         }
-//         ; //Проверка поля ввода имени в popup-design
-//         inputCheck('name-first', /^[а-яёА-яЁ\s]*$/); 
-//         inputCheck('name-second', /^[а-яёА-яЁ\s]*$/); 
-//         // inputCheck('email-first', /^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z])+$/); 
-//         // inputCheck('email-second', /^[A-z0-9_.-]{1,}@([A-z0-9_.-]{1,}).([A-z]{2,8})*$/); 
-//     }
-//     nameAndEmailCheck();
-//     const myMail = document.getElementById('email-first');
-//     const re = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
-//     console.log(myMail);
-//     function validMail() {
-//         myMail.addEventListener('keyup', () => {
-//             let myMailValue = myMail.value;
-//             console.log(myMailValue);
-//             let valid = re.test(myMailValue);
-//             if (valid) {
-//                 console.log('valid');
-//             } else {
-//                 console.log('not valid');
-//             }
-//             return valid;
-//         });
-//     }
-//     validMail();
-// })();
 "use strict";
+
+;
+
+(function () {
+  $('.first-form').validate({
+    rules: {
+      name: {
+        required: true,
+        name: true
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      phone: {
+        required: true,
+        phone: true
+      }
+    },
+    messages: {
+      name: {
+        required: 'Пожалуйста, введите свое имя',
+        name: 'Возможно, вы не ввели имя с ошибкой'
+      },
+      phone: {
+        required: 'Пожалуйста, введите свой телефон',
+        phone: 'Допускается только формат +7(999)999-99-99. Возможно, вы ввели телефон с ошибкой'
+      },
+      email: {
+        required: 'Пожалуйста, введите свой email',
+        email: 'Email адрес должен быть в формате name@domain.com. Возможно, вы ввели email с ошибкой'
+      }
+    }
+  });
+  $('.second-form').validate({
+    rules: {
+      name: {
+        required: true,
+        name: true
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      phone: {
+        required: true,
+        phone: true
+      }
+    },
+    messages: {
+      name: {
+        required: 'Пожалуйста, введите свое имя',
+        name: 'Допускаются только буквы кириллицы. Возможно, вы ввели имя с ошибкой'
+      },
+      phone: {
+        required: 'Пожалуйста, введите свой телефон',
+        phone: 'Допускается только формат +7(999)999-99-99. Возможно, вы ввели телефон с ошибкой'
+      },
+      email: {
+        required: 'Пожалуйста, введите свой email',
+        email: 'Email адрес должен быть в формате name@domain.com. Возможно, вы ввели email с ошибкой'
+      }
+    }
+  });
+  $('.modal-form').validate({
+    rules: {
+      name: {
+        required: true,
+        name: true
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      phone: {
+        required: true,
+        phone: true
+      }
+    },
+    messages: {
+      name: {
+        required: 'Пожалуйста, введите свое имя',
+        name: 'Допускаются только буквы кириллицы. Возможно, вы ввели имя с ошибкой'
+      },
+      phone: {
+        required: 'Пожалуйста, введите свой телефон',
+        phone: 'Допускается только формат +7(999)999-99-99. Возможно, вы ввели телефон с ошибкой'
+      },
+      email: {
+        required: 'Пожалуйста, введите свой email',
+        email: 'Email адрес должен быть в формате name@domain.com. Возможно, вы ввели email с ошибкой'
+      }
+    }
+  });
+  $('.first-form').submit(function () {
+    var th = $(this);
+    $.ajax({
+      type: "POST",
+      url: "../php/form-first.php",
+      data: th.serialize()
+    }).done(function () {
+      setTimeout(function () {
+        th.trigger('reset');
+      }, 1000);
+    });
+    return false;
+  });
+  $('.second-form').submit(function () {
+    var th = $(this);
+    $.ajax({
+      type: "POST",
+      url: "../php/form-first.php",
+      data: th.serialize()
+    }).done(function () {
+      setTimeout(function () {
+        th.trigger('reset');
+      }, 1000);
+    });
+    return false;
+  });
+  $('.modal-form').submit(function () {
+    var th = $(this);
+    $.ajax({
+      type: "POST",
+      url: "../php/form-first.php",
+      data: th.serialize()
+    }).done(function () {
+      setTimeout(function () {
+        th.trigger('reset');
+      }, 1000);
+    });
+    return false;
+  });
+})();
 "use strict";
 
 ;
@@ -262,13 +343,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   var nav = document.querySelector('.nav');
   var navList = document.querySelector('.nav-list');
   var menuLinks = document.querySelectorAll('.nav__link');
-  var body = document.getElementsByTagName('body')[0]; // const logoText = document.querySelector('.logo__link');
-  // const social = document.querySelector('.social-list');
-  // const mobileBtn = document.querySelector('.mobile-menu__btn');
-  // const socialLinks = document.querySelectorAll('.social__icon');
-
+  var body = document.getElementsByTagName('body')[0];
   var screenWidth = window.screen.availWidth;
-  var timerShow;
   hamburger.addEventListener('click', mobileMenu);
 
   function mobileMenuLinkClick() {
@@ -285,7 +361,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
   function mobileMenu() {
     if (!hamburger.classList.contains('active')) {
-      // timerShow = setTimeout(menuLinksShow, 500);
       hamburger.classList.add('active');
       nav.classList.add('nav--open');
       navList.classList.add('nav-list--open');
@@ -296,7 +371,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   }
 
   function mobileMenuHide() {
-    // setTimeout(menuLinksHide, 250);
     hamburger.classList.remove('active');
     nav.classList.remove('nav--open');
     navList.classList.remove('nav-list--open');
@@ -334,7 +408,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 (function () {
   //Задаем инпут
   var input_1 = document.querySelector('.phone-first');
-  var input_2 = document.querySelector('.phone-second'); //Функция маски инпута
+  var input_2 = document.querySelector('.phone-second');
+  var input_3 = document.querySelector('.phone-modal'); //Функция маски инпута
 
   function setMask(event) {
     //Задаем в переменную нажатую клавишу
@@ -380,6 +455,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
     input_1.setSelectionRange(input_1.value.length, input_1.value.length);
     input_2.setSelectionRange(input_2.value.length, input_2.value.length);
+    input_3.setSelectionRange(input_3.value.length, input_3.value.length);
   } //Запуск функции setMask через обработчик событий
 
 
@@ -391,6 +467,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   input_2.addEventListener('focus', setMask, false);
   input_2.addEventListener('blur', setMask, false);
   input_2.addEventListener('keydown', setMask, false);
+  input_3.addEventListener('input', setMask, false);
+  input_3.addEventListener('focus', setMask, false);
+  input_3.addEventListener('blur', setMask, false);
+  input_3.addEventListener('keydown', setMask, false);
 })();
 "use strict";
 

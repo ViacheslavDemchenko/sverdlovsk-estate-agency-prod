@@ -10,6 +10,7 @@
        url('../fonts/playfair-display-medium/PlayfairDisplay-Medium.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -22,6 +23,7 @@
        url('../fonts/raleway-bold/Raleway-Bold.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -34,6 +36,7 @@
        url('../fonts/raleway-medium/Raleway-Medium.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -46,6 +49,7 @@
        url('../fonts/raleway-regular/Raleway-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -58,5 +62,6 @@
        url('../fonts/roboto-regular/Roboto-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
