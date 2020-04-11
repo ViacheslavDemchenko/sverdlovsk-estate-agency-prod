@@ -3,8 +3,8 @@
   <head itemscope itemtype="http://schema.org/WPHeader">
     <meta charset="UTF-8">
     <title itemprop="headline">Бюро свердловской недвижимости</title>
-    <meta itemprop="description" name="description" content="">
-    <meta itemprop="keywords" name="keywords" content="">
+    <meta itemprop="description" content="">
+    <meta itemprop="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./css/main.css">
@@ -19,19 +19,19 @@
       <header class="header">
         <div class="container container--lines-light">
           <div class="header-top">
-            <div class="logo"> <a class="logo__link" href="#">LOGO</a></div>
-            <nav class="nav">
+            <div class="logo"><a class="logo__link" href="#">LOGO</a></div>
+            <nav class="nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
               <ul class="nav-list">
-                <li class="nav__item"><a class="nav__link" href="#services">Что мы можем?</a></li>
-                <li class="nav__item"><a class="nav__link" href="#lawyer">Юридический отдел</a></li>
-                <li class="nav__item"><a class="nav__link" href="#contacts">Контакты</a></li>
+                <li class="nav__item"><a class="nav__link" href="#services" itemprop="url">Что мы можем?</a></li>
+                <li class="nav__item"><a class="nav__link" href="#lawyer" itemprop="url">Юридический отдел</a></li>
+                <li class="nav__item"><a class="nav__link" href="#contacts" itemprop="url">Контакты</a></li>
               </ul>
             </nav>
             <ul class="phone-column">
               <li class="phone-number"><a class="phone__link" href="tel:+73432693201" aria-label="Позвонить">+7 (343) 269 32 01</a></li>
               <li class="call-order">Заказать обратный звонок</li>
             </ul>
-            <button class="cmn-toggle-switch cmn-toggle-switch__htx" area-label="Открыть мобильное меню" id="menu__button"><span>toggle menu</span></button>
+            <button class="cmn-toggle-switch cmn-toggle-switch__htx" id="menu__button"><span>toggle menu</span></button>
           </div>
           <div class="header-center">
             <div class="center-content">
@@ -83,10 +83,10 @@
               <div class="services-rightcol">
                 <div class="first-form-wrap">
                   <form class="first-form" method="post" action="#">
-                    <legend>
+                    <div class="form__inner">
                       <h3 class="form__title">Закажите консультацию</h3>
                       <p class="form__subtitle">Закажите консультацию и в ближайшее время наш специалист свяжется с вами</p>
-                    </legend>
+                    </div>
                     <div class="input-blocks-wrap">
                       <div class="input-block">
                         <input class="name-first" id="name-first" type="text" name="name" placeholder="Ваше имя" required>
@@ -212,10 +212,10 @@
                 <div class="form-block__inner">
                   <div class="second-form-wrap">
                     <form class="second-form" method="post" action="#">
-                      <legend>
+                      <div class="form__inner">
                         <h3 class="form__title">Закажите консультацию</h3>
                         <p class="form__subtitle">Закажите консультацию и в ближайшее время наш специалист свяжется с вами</p>
-                      </legend>
+                      </div>
                       <div class="input-blocks-wrap">
                         <div class="input-block">
                           <input class="name-second" id="name-second" type="text" name="name" placeholder="Ваше имя" required>
@@ -246,8 +246,8 @@
       </section>
       <section class="contacts">
         <div class="container container--lines-dark container--contacts" id="contacts">
-          <div class="section__title section__title--black section__title--contacts">Контакты</div>
-          <div class="map">
+          <h2 class="section__title section__title--black section__title--contacts">Контакты</h2>
+          <div class="map" id="map">
             <div class="map__inner" id="yandex-map" aria-label="Свердловская обл., г. Екатеринбург, Черноморский переулок, д. 4, кв. 22">
               <div class="contacts-block">
                 <ul class="contacts-list">
@@ -268,18 +268,21 @@
           </ul>
         </div>
       </section>
-      <footer class="footer">
+      <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
         <div class="container">
           <div class="logo-footer"><a class="logo-footer__link" href="#">LOGO</a></div>
           <div class="footer-cols">
             <div class="footer-leftcol">
-              <ul class="footer-contacts-list">
-                <li class="footer-contacts__item">ООО Бюро "Свердловской недвижимости"</li>
-                <li class="footer-contacts__item">ИНН 6686112820</li>
-                <li class="footer-contacts__item">ОГРН 1196658009041</li>
-                <li class="footer-contacts__item">Юр.адрес: 620057, Свердловская обл., г. Екатеринбург, Черноморский переулок, д. 4, кв. 22</li>
-                <li class="footer-contacts__item"><a class="phone" href="tel:+73432693201" aria-label="Позвонить">Тел.: +7 (343) 269 32 01</a></li>
-              </ul>
+              <div class="footer-contacts-list" itemscope itemtype="http://schema.org/Organization">
+                <div class="organisation-name hidden" itemprop="name" tabindex="-1">ООО Бюро "Свердловской недвижимости"</div>
+                <div class="address-block" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                  <div class="footer-contacts__item">ООО Бюро "Свердловской недвижимости"</div>
+                  <div class="footer-contacts__item">ИНН 6686112820</div>
+                  <div class="footer-contacts__item">ОГРН 1196658009041</div>
+                  <div class="footer-contacts__item">Юр.адрес: <span itemprop="postalCode">620057, </span><span itemprop="addressRegion">Свердловская обл., </span><span itemprop="addressLocality">г. Екатеринбург,</span><span itemprop="streetAddress">Черноморский переулок, д. 4, кв. 22</span></div>
+                  <div class="footer-contacts__item"><a class="phone" href="tel:+73432693201" itemprop="telephone" aria-label="Позвонить">Тел.: +7 (343) 269 32 01</a></div>
+                </div>
+              </div>
             </div>
             <div class="footer-rightcol">
               <div class="agency-name"> 
@@ -300,10 +303,10 @@
       <div class="modal" id="modal">
         <div class="modal__inner">
           <form class="modal-form" method="post" action="#">
-            <legend>
+            <div class="form__inner">
               <h3 class="form__title">Закажите консультацию</h3>
               <p class="form__subtitle">Закажите консультацию и в ближайшее время наш специалист свяжется с вами</p>
-            </legend>
+            </div>
             <div class="input-blocks-wrap">
               <div class="input-block">
                 <input class="name-modal" id="name-modal" type="text" name="name" placeholder="Ваше имя" required>
@@ -322,9 +325,9 @@
       </div>
       <div class="modal-overlay"></div>
     </div>
+    <script src="js/jquery-1.3.4.min.js"></script>
+    <script src="js/jquery.validate.js"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
-<script src="js/jquery-1.3.4.min.js"></script>
-<script src="js/jquery.validate.js"></script>
-<script src="js/main.js"></script>

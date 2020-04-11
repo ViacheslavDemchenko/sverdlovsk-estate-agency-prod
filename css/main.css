@@ -63,6 +63,13 @@ label.error {
   font-weight: normal;
 }
 
+.hidden {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+}
+
 /* Box-sizing-model */
 
 *,
@@ -691,7 +698,7 @@ template {
   height: 100%;
   min-height: 78.125rem;
   overflow-x: hidden;
-  background: rgba(124, 124, 124, 0.92);
+  background: #7C7C7C;
 }
 
 .lawyer::before {
@@ -750,7 +757,7 @@ template {
   height: 100%;
   overflow-x: hidden;
   min-height: 61.25rem;
-  background: rgba(124, 124, 124, 0.92);
+  background: #7C7C7C;
 }
 
 .form-cols {
@@ -793,7 +800,7 @@ template {
   height: 100%;
   overflow-x: hidden;
   min-height: 61.25rem;
-  background: rgba(124, 124, 124, 0.92);
+  background: #7C7C7C;
 }
 
 .form-cols {
@@ -1955,7 +1962,7 @@ template {
   border-radius: 50% / 10%;
 }
 
-.second-form legend {
+.second-form .form__inner {
   margin: 0 auto;
 }
 
@@ -2268,7 +2275,7 @@ template {
   display: none;
 }
 
-.modal legend {
+.modal .form__inner {
   text-align: center;
 }
 
@@ -2375,7 +2382,7 @@ template {
 }
 
 @media (min-width: 20rem) {
-  .first-form legend {
+  .first-form .form__inner {
     margin: auto;
   }
 
@@ -5073,7 +5080,7 @@ template {
     max-width: 25rem;
   }
 
-  .second-form legend {
+  .second-form .form__inner {
     padding: 0 1.25rem;
   }
 

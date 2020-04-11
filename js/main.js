@@ -563,7 +563,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 ;
 
 (function () {
-  ymaps.ready(init);
+  // ymaps.ready(init);
   var myMap, myPlacemark;
 
   function init() {
@@ -585,6 +585,52 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       iconImageSize: [70, 70]
     });
     myMap.geoObjects.add(myPlacemark);
+  } // Запуск функции печати текста после появления соответствующего блока на экране через скролл
+
+
+  var element = document.querySelector('#map');
+
+  function checkDialogVisible(target) {
+    // Все позиции элемента
+    var targetPosition = {
+      top: window.pageYOffset + target.getBoundingClientRect().top,
+      left: window.pageXOffset + target.getBoundingClientRect().left,
+      right: window.pageXOffset + target.getBoundingClientRect().right,
+      bottom: window.pageYOffset + target.getBoundingClientRect().bottom
+    },
+        // Получаем позиции окна
+    windowPosition = {
+      top: window.pageYOffset,
+      left: window.pageXOffset,
+      right: window.pageXOffset + document.documentElement.clientWidth,
+      bottom: window.pageYOffset + document.documentElement.clientHeight
+    };
+
+    if (targetPosition.bottom > windowPosition.top && // Если позиция нижней части элемента больше позиции верхней чайти окна, то элемент виден сверху
+    targetPosition.top < windowPosition.bottom && // Если позиция верхней части элемента меньше позиции нижней чайти окна, то элемент виден снизу
+    targetPosition.right > windowPosition.left && // Если позиция правой стороны элемента больше позиции левой части окна, то элемент виден слева
+    targetPosition.left < windowPosition.right) {
+      // Если позиция левой стороны элемента меньше позиции правой чайти окна, то элемент виден справа
+      // Если элемент полностью видно, то запускаем следующий код
+      return true;
+    }
+  }
+
+  ; // Снимаем обработчик события после совершения действия или выполнения условия
+
+  var handler = function handler(event) {
+    if (checkDialogVisible(element)) {
+      ymaps.ready(init);
+      window.removeEventListener('scroll', handler);
+    }
+  };
+
+  window.addEventListener('scroll', handler); // А также запустим функцию печати текста сразу. А то вдруг, элемент изначально видно
+
+  if (checkDialogVisible(element)) {
+    console.log('Видна');
+    ymaps.ready(init);
+    window.removeEventListener('scroll', handler);
   }
 })();
 "use strict";
